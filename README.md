@@ -5,5 +5,5 @@ SonaeBIT Remote Solution v1.0
 2. Manual do Utilizador
 
 Backlog:
-- Deteção de qual monitor POS é utilizado e centralizar abas de script apenas neste monitor.
+- Deteção de qual monitor o POS está a ser utilizado e centralizar abas de script neste monitor.
 - Screen recording automatizado
