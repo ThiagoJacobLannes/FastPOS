@@ -1,15 +1,16 @@
 ﻿; ===========================
 ; Script created by: Thiago Jacob Lannes
-; Date: 31-01-2022
-; Version: 1.95
+; Date: 23-08-2022
+; Version: 2
 ; ===========================
+
 #NoEnv
 SendMode Input
 SetWorkingDir %A_ScriptDir%
 
 WinActivate , POS
 WinWaitActive , POS
-WinMove , POS, , width / 2, height / 2, 1386, 600
+WinMove , POS, , width / 2 -100, height / 2, 1386, 600
 
 If (A_ScreenDPI <> 96) {
 Percent := Chr(37)
@@ -39,503 +40,408 @@ RButton::Pause
 ^r::Reload
 return
 
-; FUNÇÃO TECLAR()
+; FUNÇÃO Paste
 
-Teclar(x) {
-  if (x = 0) {
-  Text:="|<Numpad0>*169$12.003k7wCQACQCQCQCQCQCAACQ7s3k00U"
-
-  if (ok:=FindText(X, Y, 395-150000, 396-150000, 395+150000, 396+150000, 0, 0, Text))
-  {
-     FindText().Click(X, Y, "L")
-  }
-  }
-  else if (x = 1) {
-  Text:="|<Numpad1>*161$11.0030C1w7s4k1U3060A0M0k7sTk04"
-
-  if (ok:=FindText(X, Y, 461-150000, 338-150000, 461+150000, 338+150000, 0, 0, Text))
-  {
-    FindText().Click(X, Y, "L")
-  }
-
-  }
-  else if (x = 2) {
-  Text:="|<Numpad2>*166$11.007UTVnX70C0Q1k30C0s3UDwzs04"
-
-  if (ok:=FindText(X, Y, 546-150000, 338-150000, 546+150000, 338+150000, 0, 0, Text))
-  {
-    FindText().Click(X, Y, "L")
-  }
-  Text:="|<NUMPAD2BDC>*175$9.00sDnCMkC1UM61kTly04"
-
-    if (ok:=FindText(X, Y, 159-150000, 388-150000, 159+150000, 388+150000, 0, 0, Text))
+Paste(entry) {
+    Loop, Parse, entry
     {
-    FindText().Click(X, Y, "L")
+        if (A_LoopField = 0) {
+          Padrao := "|<Numpad0>*169$12.003k7wCQACQCQCQCQCQCAACQ7s3k00U"
+          Rocky := "|<Numpad0Rocky>*174$12.003kDwCQQCQCQCQCQCQCQACQ7s3k00U"
+          BDC := "|<0BDC>*169$10.00S3wQlXa6MNVaABky00U"
+          Contador := 0
+
+          if (ok:=FindText(X, Y, 461-150000, 338-150000, 461+150000, 338+150000, 0, 0, Padrao))
+          {
+            if Contador <> 1
+            {
+              FindText().Click(X, Y, "L")
+              Contador++
+            }
+          }
+
+          else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, Rocky))
+          {
+            if Contador <> 1
+            {
+              FindText().Click(X, Y, "L")
+              Contador++
+            }
+          }
+
+          else (ok:=FindText(X, Y, 112-150000, 388-150000, 112+150000, 388+150000, 0, 0, BDC))
+          {
+            if Contador <> 1
+            {
+              FindText().Click(X, Y, "L")
+              Contador++
+            }
+          }
+        }
+        else if (A_LoopField = 1) {
+          Padrao := "|<Numpad1>*161$11.0030C1w7s4k1U3060A0M0k7sTk04"
+          Rocky := "|<Numpad1Rocky>*174$8.73lwzBkQ71kQ71lzTs"
+          BDC := "|<NUMPAD1BDC>*173$9.00MD3s/0M30M30sDlw04"
+          Contador := 0
+
+          if (ok:=FindText(X, Y, 461-150000, 338-150000, 461+150000, 338+150000, 0, 0, Padrao))
+          {
+            if Contador <> 1
+            {
+              FindText().Click(X, Y, "L")
+              Contador++
+            }
+          }
+
+          else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, Rocky))
+          {
+            if Contador <> 1
+            {
+              FindText().Click(X, Y, "L")
+              Contador++
+            }
+          }
+
+          else if (ok:=FindText(X, Y, 112-150000, 388-150000, 112+150000, 388+150000, 0, 0, BDC))
+          {
+            if Contador <> 1
+            {
+              FindText().Click(X, Y, "L")
+              Contador++
+            }
+          }
+        }
+        else if (A_LoopField = 2) {
+          Padrao := "|<Numpad2>*166$11.007UTVnX70C0Q1k30C0s3UDwzs04"
+          Rocky := "|<Numpad2Rocky>*173$9.7XyRz70s71kQ71kS7zzw"
+          BDC := "|<NUMPAD2BDC>*175$9.00sDnCMkC1UM61kTly04"
+          Contador := 0
+
+          if (ok:=FindText(X, Y, 461-150000, 338-150000, 461+150000, 338+150000, 0, 0, Padrao))
+          {
+            if Contador <> 1
+            {
+              FindText().Click(X, Y, "L")
+              Contador++
+            }
+          }
+
+          else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, Rocky))
+          {
+            if Contador <> 1
+            {
+              FindText().Click(X, Y, "L")
+              Contador++
+            }
+          }
+
+          else (ok:=FindText(X, Y, 112-150000, 388-150000, 112+150000, 388+150000, 0, 0, BDC))
+          {
+            if Contador <> 1
+            {
+              FindText().Click(X, Y, "L")
+              Contador++
+            }
+          }
+        }
+        else if (A_LoopField = 3) {
+          Padrao := "|<Numpad3>*169$11.007UzVXb70A1s3k3k3W7CCDsDU04"
+          Rocky := "|<Numpad3Rocky>*170$9.7VyQv30sS3k70O3svzDY"
+          BDC := "|<NUMPAD3BDC>*173$11.007UTVn160s1s0klVr1w0U01"
+          Contador := 0
+
+          if (ok:=FindText(X, Y, 461-150000, 338-150000, 461+150000, 338+150000, 0, 0, Padrao))
+          {
+            if Contador <> 1
+            {
+              FindText().Click(X, Y, "L")
+              Contador++
+            }
+          }
+
+          else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, Rocky))
+          {
+            if Contador <> 1
+            {
+              FindText().Click(X, Y, "L")
+              Contador++
+            }
+          }
+
+          else (ok:=FindText(X, Y, 112-150000, 388-150000, 112+150000, 388+150000, 0, 0, BDC))
+          {
+            if Contador <> 1
+            {
+              FindText().Click(X, Y, "L")
+              Contador++
+            }
+          }
+        }
+        else if (A_LoopField = 4) {
+          Padrao := "|<Numpad4>*164$12.000s0s1s3M7MCMAMTyTy0M0M0M0800U"
+          Rocky := "|<Numpad4Rocky>*168$10.1kD0w6kn7Asnzzz0k30A0G"
+          BDC := "|<NUMPAD4BDC>*173$10.0060w3kP3AMlzby0k300U"
+          Contador := 0
+
+          if (ok:=FindText(X, Y, 461-150000, 338-150000, 461+150000, 338+150000, 0, 0, Padrao))
+          {
+            if Contador <> 1
+            {
+              FindText().Click(X, Y, "L")
+              Contador++
+            }
+          }
+
+          else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, Rocky))
+          {
+            if Contador <> 1
+            {
+              FindText().Click(X, Y, "L")
+              Contador++
+            }
+          }
+
+          else (ok:=FindText(X, Y, 112-150000, 388-150000, 112+150000, 388+150000, 0, 0, BDC))
+          {
+            if Contador <> 1
+            {
+              FindText().Click(X, Y, "L")
+              Contador++
+            }
+          }
+        }
+        else if (A_LoopField = 5) {
+          Padrao := "|<Numpad5>*161$10.00z30Q1U7sTk3UC0M3aQTUM00U"
+          Rocky := "|<Numpad5Rocky>*171$9.DnyM30TXy0s70s7znw64"
+          BDC := "|<NUMPAD5BDC>*170$9.01wDX0S3w1UC1nQT00U"
+          Contador := 0
+
+          if (ok:=FindText(X, Y, 461-150000, 338-150000, 461+150000, 338+150000, 0, 0, Padrao))
+          {
+            if Contador <> 1
+            {
+              FindText().Click(X, Y, "L")
+              Contador++
+            }
+          }
+
+          else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, Rocky))
+          {
+            if Contador <> 1
+            {
+              FindText().Click(X, Y, "L")
+              Contador++
+            }
+          }
+
+          else (ok:=FindText(X, Y, 112-150000, 388-150000, 112+150000, 388+150000, 0, 0, BDC))
+          {
+            if Contador <> 1
+            {
+              FindText().Click(X, Y, "L")
+              Contador++
+            }
+          }
+        }
+        else if (A_LoopField = 6) {
+          Padrao := "|<Numpad6>*162$11.003U60M1U7sDsstUn1b77QDs2004"
+          Rocky := "|<Numpad6Rocky>*175$10.3kC1kC1z7ysvVy7sNzXw72"
+          BDC := "|<NUMPAD6BDC>*171$11.003UC0M1k7sCsMklVr1w0001"
+          Contador := 0
+
+          if (ok:=FindText(X, Y, 461-150000, 338-150000, 461+150000, 338+150000, 0, 0, Padrao))
+          {
+            if Contador <> 1
+            {
+              FindText().Click(X, Y, "L")
+              Contador++
+            }
+          }
+
+          else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, Rocky))
+          {
+            if Contador <> 1
+            {
+              FindText().Click(X, Y, "L")
+              Contador++
+            }
+          }
+
+          else (ok:=FindText(X, Y, 112-150000, 388-150000, 112+150000, 388+150000, 0, 0, BDC))
+          {
+            if Contador <> 1
+            {
+              FindText().Click(X, Y, "L")
+              Contador++
+            }
+          }
+        }
+        else if (A_LoopField = 7) {
+          Padrao := "|<Numpad7>*165$11.00ztzk30C0M1k30C0M1k30C0M004"
+          Rocky := "|<Numpad7Rocky>*168$10.zxzk60s30Q1UC0k70M3UA2"
+          BDC := "|<NUMPAD7BDC>*168$9.03yTk61UA30M60kA00U"
+          Contador := 0
+
+          if (ok:=FindText(X, Y, 461-150000, 338-150000, 461+150000, 338+150000, 0, 0, Padrao))
+          {
+            if Contador <> 1
+            {
+              FindText().Click(X, Y, "L")
+              Contador++
+            }
+          }
+
+          else if (ok:=FindText(X, Y, 112-150000, 388-150000, 112+150000, 388+150000, 0, 0, BDC))
+          {
+            if Contador <> 1
+            {
+              FindText().Click(X, Y, "L")
+              Contador++
+            }
+          }
+
+          else (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, Rocky))
+          {
+            if Contador <> 1
+            {
+              FindText().Click(X, Y, "L")
+              Contador++
+            }
+          }
+        }
+        else if (A_LoopField = 8) {
+          Padrao := "|<Numpad8>*162$11.00DUzVXX76C7sTllnVb3CCDs7U04"
+          Rocky := "|<Numpad8Rocky>*170$9.DXysz7MvyTr7sT3svyDY"
+          BDC := "|<NUMPAD8BDC>*165$9.00sTX6TlwRX6MniDU0U"
+          Contador := 0
+
+          if (ok:=FindText(X, Y, 461-150000, 338-150000, 461+150000, 338+150000, 0, 0, Padrao))
+          {
+            if Contador <> 1
+            {
+              FindText().Click(X, Y, "L")
+              Contador++
+            }
+          }
+
+          else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, Rocky))
+          {
+            if Contador <> 1
+            {
+              FindText().Click(X, Y, "L")
+              Contador++
+            }
+          }
+
+          else (ok:=FindText(X, Y, 112-150000, 388-150000, 112+150000, 388+150000, 0, 0, BDC))
+          {
+            if Contador <> 1
+            {
+              FindText().Click(X, Y, "L")
+              Contador++
+            }
+          }
+        }
+        else if (A_LoopField = 9) {
+          Padrao := "|<Numpad9>*164$11.00DUzXXa7CCQQTkTU60M1k70A004"
+          Rocky := "|<Numpad9Rocky>*170$9.DXyMz3sTbTty1kQ71kA4"
+          BDC := "|<NUMPAD9BDC>*167$9.00sDn6MnyDkA3Us600U"
+          Contador := 0
+
+          if (ok:=FindText(X, Y, 461-150000, 338-150000, 461+150000, 338+150000, 0, 0, Padrao))
+          {
+            if Contador <> 1
+            {
+              FindText().Click(X, Y, "L")
+              Contador++
+            }
+          }
+
+          else if (ok:=FindText(X, Y, 112-150000, 388-150000, 112+150000, 388+150000, 0, 0, BDC))
+          {
+            if Contador <> 1
+            {
+              FindText().Click(X, Y, "L")
+              Contador++
+            }
+          }
+
+          else (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, Rocky))
+          {
+            if Contador <> 1
+            {
+              FindText().Click(X, Y, "L")
+              Contador++
+            }
+          }
+        }
     }
-  }
-  else if (x = 3) {
-  Text:="|<Numpad3>*169$11.007UzVXb70A1s3k3k3W7CCDsDU04"
 
-  if (ok:=FindText(X, Y, 565-150000, 322-150000, 565+150000, 322+150000, 0, 0, Text))
-  {
-     FindText().Click(X, Y, "L")
-  }
-  Text:="|<NUMPAD3BDC>*173$11.007UTVn160s1s0klVr1w0U01"
+    EntraPadrao:="|<Entra>*120$36.000000Ds0800Ds0A00A1MSoMA3yyzyDnaQsaDn6Qk6A36QkyA36QlyDv6ClyDv6Cly000000U"
+    EntraRocky:="|<EntraRocky>*124$34.zU0U03w0600A1MyYQkDvvzvwtaC1jn6Mk6kANX3z0laANzv6QlbzgMv7y"
+    Contador:=0
 
-    if (ok:=FindText(X, Y, 205-150000, 388-150000, 205+150000, 388+150000, 0, 0, Text))
+    if (ok:=FindText(X, Y, 650-150000, 175-150000, 650+150000, 175+150000, 0, 0, EntraPadrao))
     {
-     FindText().Click(X, Y, "L")
+      if Contador <> 1 
+      {
+        FindText().Click(X, Y, "L")
+        Contador++
+      }
     }
-  }
-  else if (x = 4) {
-  Text:="|<Numpad4>*164$12.000s0s1s3M7MCMAMTyTy0M0M0M0800U"
-
-  if (ok:=FindText(X, Y, 395-150000, 249-150000, 395+150000, 249+150000, 0, 0, Text))
-  {
-     FindText().Click(X, Y, "L")
-  }
-  Text:="|<NUMPAD4BDC>*173$10.0060w3kP3AMlzby0k300U"
-
-    if (ok:=FindText(X, Y, 253-150000, 388-150000, 253+150000, 388+150000, 0, 0, Text))
+    else (ok:=FindText(X, Y, 650-150000, 175-150000, 650+150000, 175+150000, 0, 0, EntraRocky))
     {
-     FindText().Click(X, Y, "L")
+      if Contador <> 1 
+      {
+        FindText().Click(X, Y, "L")
+        Contador++
+      }
     }
-  }
-  else if (x = 5) {
-  Text:="|<Numpad5>*161$10.00z30Q1U7sTk3UC0M3aQTUM00U"
 
-  if (ok:=FindText(X, Y, 481-150000, 249-150000, 481+150000, 249+150000, 0, 0, Text))
-  {
-     FindText().Click(X, Y, "L")
-  }
-  }
-  else if (x = 6) {
-  Text:="|<Numpad6>*162$11.003U60M1U7sDsstUn1b77QDs2004"
+}
 
-  if (ok:=FindText(X, Y, 565-150000, 249-150000, 565+150000, 249+150000, 0, 0, Text))
-  {
-     FindText().Click(X, Y, "L")
-  }
-  }
-  else if (x = 7) {
-  Text:="|<Numpad7>*165$11.00ztzk30C0M1k30C0M1k30C0M004"
+Login() {
 
-  if (ok:=FindText(X, Y, 395-150000, 175-150000, 395+150000, 175+150000, 0, 0, Text))
-  {
-     FindText().Click(X, Y, "L")
-  }
-  }
-  else if (x = 8) {
-  Text:="|<Numpad8>*162$11.00DUzVXX76C7sTllnVb3CCDs7U04"
+  FileRead, credenciais, settings.txt
 
-  if (ok:=FindText(X, Y, 480-150000, 175-150000, 480+150000, 175+150000, 0, 0, Text))
-  {
-     FindText().Click(X, Y, "L")
-  }
-  }
-  else if (x = 9) {
-  Text:="|<Numpad9>*164$11.00DUzXXa7CCQQTkTU60M1k70A004"
+  if FileExist("settings.txt") {
+      FileRead, credenciais, settings.txt
+      account := StrSplit(credenciais, A_Tab)
 
-  if (ok:=FindText(X, Y, 565-150000, 175-150000, 565+150000, 175+150000, 0, 0, Text))
-  {
-     FindText().Click(X, Y, "L")
-  }
+      User := (account.1)
+      Pass := (account.2)
+
+      Paste(User)
+      Paste(Pass)
+
   }
   else {
-    return
-  }
-return
-}
-
-; TECLAR BDC
-
-TeclarBDC(x) {
-  if (x = 0) {
-  Text:="|<0BDC>*169$10.00S3wQlXa6MNVaABky00U"
-
-    if (ok:=FindText(X, Y, 533-150000, 388-150000, 533+150000, 388+150000, 0, 0, Text))
-    {
-     FindText().Click(X, Y, "L")
-    }
-  }
-  else if (x = 1) {
-  Text:="|<NUMPAD1BDC>*173$9.00MD3s/0M30M30sDlw04"
-
-    if (ok:=FindText(X, Y, 112-150000, 388-150000, 112+150000, 388+150000, 0, 0, Text))
-    {
-     FindText().Click(X, Y, "L")
-    }
-  }
-  else if (x = 2) {
-  Text:="|<NUMPAD2BDC>*175$9.00sDnCMkC1UM61kTly04"
-
-    if (ok:=FindText(X, Y, 159-150000, 388-150000, 159+150000, 388+150000, 0, 0, Text))
-    {
-    FindText().Click(X, Y, "L")
-    }
-  }
-  else if (x = 3) {
-  Text:="|<NUMPAD3BDC>*173$11.007UTVn160s1s0klVr1w0U01"
-
-    if (ok:=FindText(X, Y, 205-150000, 388-150000, 205+150000, 388+150000, 0, 0, Text))
-    {
-     FindText().Click(X, Y, "L")
-    }
-  }
-  else if (x = 4) {
-  Text:="|<NUMPAD4BDC>*173$10.0060w3kP3AMlzby0k300U"
-
-    if (ok:=FindText(X, Y, 253-150000, 388-150000, 253+150000, 388+150000, 0, 0, Text))
-    {
-     FindText().Click(X, Y, "L")
-    }
-  }
-  else if (x = 5) {
-  Text:="|<NUMPAD5BDC>*170$9.01wDX0S3w1UC1nQT00U"
-
-    if (ok:=FindText(X, Y, 299-150000, 388-150000, 299+150000, 388+150000, 0, 0, Text))
-    {
-     FindText().Click(X, Y, "L")
-    }
-  }
-  else if (x = 6) {
-  Text:="|<NUMPAD6BDC>*171$11.003UC0M1k7sCsMklVr1w0001"
-
-    if (ok:=FindText(X, Y, 346-150000, 388-150000, 346+150000, 388+150000, 0, 0, Text))
-    {
-    FindText().Click(X, Y, "L")
-    }
-  }
-  else if (x = 7) {
-    Text:="|<NUMPAD7BDC>*168$9.03yTk61UA30M60kA00U"
-
-    if (ok:=FindText(X, Y, 392-150000, 388-150000, 392+150000, 388+150000, 0, 0, Text))
-    {
-     FindText().Click(X, Y, "L")
-    }
-  }
-  else if (x = 8) {
-  Text:="|<NUMPAD8BDC>*165$9.00sTX6TlwRX6MniDU0U"
-
-    if (ok:=FindText(X, Y, 439-150000, 388-150000, 439+150000, 388+150000, 0, 0, Text))
-    {
-     FindText().Click(X, Y, "L")
-    }
-  }
-  else if (x = 9) {
-  Text:="|<NUMPAD9BDC>*167$9.00sDn6MnyDkA3Us600U"
-
-    if (ok:=FindText(X, Y, 485-150000, 388-150000, 485+150000, 388+150000, 0, 0, Text))
-    {
-     FindText().Click(X, Y, "L")
-    }
-  }
-  else if (x = " ") {  
-    Text:="|<ESPACOBDC>*166$57.0000000003wTDkC0y7kTbtz1kTtzX0kAMS30QCM61X3Mk30nsyAMn60s6T1tz6Ak70n03jUza0M6M0RUDws3VnwzA1UnzDwTblUM6Dkz0000000000U"
-
-    if (ok:=FindText(X, Y, 486-150000, 527-150000, 486+150000, 527+150000, 0, 0, Text))
-    {
-     FindText().Click(X, Y, "L")
-    }
-  }
-  else if (x = "q") {
-    Text:="|<QBDC>*170$13.000s1z1llkMkCM3A3b1VlkTk7s0601U04"
-
-    if (ok:=FindText(X, Y, 112-150000, 435-150000, 112+150000, 435+150000, 0, 0, Text))
-    {
-     FindText().Click(X, Y, "L")
-    }
-  }
-  else if (x = "w") {
-    Text:="|<WBDC>*174$17.000kENlklXXX7a6TACqsBjUSD0wS0ss1Uk001"
-
-    if (ok:=FindText(X, Y, 159-150000, 434-150000, 159+150000, 434+150000, 0, 0, Text))
-    {
-    FindText().Click(X, Y, "L")
-    }
-  }
-  else if (x = "e") {
-    Text:="|<EBDC>*159$8.07tyM61UT61UM7ty08"
-
-    if (ok:=FindText(X, Y, 206-150000, 434-150000, 206+150000, 434+150000, 0, 0, Text))
-    {
-     FindText().Click(X, Y, "L")
-    }
-  }
-  else if (x = "r") {
-    Text:="|<RBDC>*169$10.01w7wNlX6QTVy6MNlXa602"
-
-    if (ok:=FindText(X, Y, 253-150000, 434-150000, 253+150000, 434+150000, 0, 0, Text))
-    {
-     FindText().Click(X, Y, "L")
-    }
-  }
-  else if (x = "t") {
-    Text:="|<TBDC>*170$8.zzwM61UM61UM61W"
-
-    if (ok:=FindText(X, Y, 299-150000, 434-150000, 299+150000, 434+150000, 0, 0, Text))
-    {
-     FindText().Click(X, Y, "L")
-    }
-  }
-  else if (x = "y") {
-    Text:="|<YBDC>*181$9.kT3QtaDUw70M30M34"
-
-    if (ok:=FindText(X, Y, 345-150000, 434-150000, 345+150000, 434+150000, 0, 0, Text))
-    {
-     FindText().Click(X, Y, "L")
-    }
-  }
-  else if (x = "u") {
-    Text:="|<UBDC>*178$9.ET3sT3sT3sT3Qty7Y"
-
-    if (ok:=FindText(X, Y, 391-150000, 434-150000, 391+150000, 434+150000, 0, 0, Text))
-    {
-    FindText().Click(X, Y, "L")
-    }
-  }
-  else if (x = "i") {
-    Text:="|<IBDC>*177$4.1aNaNaNa2"
-
-    if (ok:=FindText(X, Y, 412-150000, 441-150000, 412+150000, 441+150000, 0, 0, Text))
-    {
-     FindText().Click(X, Y, "L")
-    }
-  }
-  else if (x = "o") {
-    Text:="|<OBDC>*174$11.3UTlln1y1s3s6kRllz0wE"
-
-    if (ok:=FindText(X, Y, 485-150000, 434-150000, 485+150000, 434+150000, 0, 0, Text))
-    {
-     FindText().Click(X, Y, "L")
-    }
-  }
-  else if (x = "p") {
-    Text:="|<PBDC>*162$7.yTwSD7zzMA631"
-
-    if (ok:=FindText(X, Y, 532-150000, 434-150000, 532+150000, 434+150000, 0, 0, Text))
-    {
-     FindText().Click(X, Y, "L")
-    }
-  }
-  else if (x = "a") {
-    Text:="|<ABDC>*227$11.3UD0T0y3g7QDsztzr1y3k"
-
-    if (ok:=FindText(X, Y, 112-150000, 480-150000, 112+150000, 480+150000, 0, 0, Text))
-    {
-     FindText().Click(X, Y, "L")
-    }
-  }
-  else if (x = "s") {
-    Text:="|<SBDC>*175$7.TTg71sC3lznm"
-
-    if (ok:=FindText(X, Y, 159-150000, 481-150000, 159+150000, 481+150000, 0, 0, Text))
-    {
-     FindText().Click(X, Y, "L")
-    }
-  }
-  else if (x = "d") {
-    Text:="|<DBDC>*170$9.zbSky3kS3kS7zrsU"
-
-    if (ok:=FindText(X, Y, 205-150000, 481-150000, 205+150000, 481+150000, 0, 0, Text))
-    {
-     FindText().Click(X, Y, "L")
-    }
-  }
-  else if (x = "f") {
-    Text:="|<FBDC>*187$8.DjzysC3yzi3Us62"
-
-    if (ok:=FindText(X, Y, 253-150000, 480-150000, 253+150000, 480+150000, 0, 0, Text))
-    {
-     FindText().Click(X, Y, "L")
-    }
-  }
-  else if (x = "g") {
-    Text:="|<GBDC>*177$10.7szr0M3UCDMRknz7u"
-
-    if (ok:=FindText(X, Y, 299-150000, 481-150000, 299+150000, 481+150000, 0, 0, Text))
-    {
-     FindText().Click(X, Y, "L")
-    }
-  }
-  else if (x = "h") {
-    Text:="|<HBDC>*182$10.sTVy7sTzzzsTVy7sO"
-
-    if (ok:=FindText(X, Y, 346-150000, 481-150000, 346+150000, 481+150000, 0, 0, Text))
-    {
-     FindText().Click(X, Y, "L")
-    }
-  }
-  else if (x = "J") {
-    Text:="|<JBDC>*172$5.6AMlX6Dzc"
-
-    if (ok:=FindText(X, Y, 391-150000, 481-150000, 391+150000, 481+150000, 0, 0, Text))
-    {
-     FindText().Click(X, Y, "L")
-    }
-  }
-  else if (x = "k") {
-    Text:="|<KBDC>*180$9.szCvbMz7svbCsz3U"
-
-    if (ok:=FindText(X, Y, 439-150000, 481-150000, 439+150000, 481+150000, 0, 0, Text))
-    {
-     FindText().Click(X, Y, "L")
-    }
-  }
-  else if (x = "l") {
-    Text:="|<LBDC>*182$9.03UQ3UQ3UQ3UQ3yTk0U"
-
-    if (ok:=FindText(X, Y, 458-150000, 488-150000, 458+150000, 488+150000, 0, 0, Text))
-    {
-    FindText().Click(X, Y, "L")
-    }
-  }
-  else if (x = "z") {
-    Text:="|<ZBDCFULL>*174$11.zxzxzk70Q0s3UC0M1k70Tyzzzu"
-
-    if (ok:=FindText(X, Y, 203-150000, 703-150000, 203+150000, 703+150000, 0, 0, Text))
-    {
-     FindText().Click(X, Y, "L")
-    }
-  }
-  else if (x = "x") {
-    Text:="|<XBDC>*175$9.kz6RVwD1sDXCsq7U"
-
-    if (ok:=FindText(X, Y, 159-150000, 527-150000, 159+150000, 527+150000, 0, 0, Text))
-    {
-     FindText().Click(X, Y, "L")
-    }
-  }
-  else if (x = "c") {
-    Text:="|<CBDC>*176$9.7nzM70k60s30TtyU"
-
-    if (ok:=FindText(X, Y, 205-150000, 527-150000, 205+150000, 527+150000, 0, 0, Text))
-    {
-     FindText().Click(X, Y, "L")
-    }
-  }
-  else if (x = "v") {
-    Text:="|<VBDC>*176$10.kT1a6Mtn3ADUS1s72"
-
-    if (ok:=FindText(X, Y, 253-150000, 527-150000, 253+150000, 527+150000, 0, 0, Text))
-    {
-     FindText().Click(X, Y, "L")
-    }
-  }
-  else if (x = "b") {
-    Text:="|<BBDC>*172$8.zjz7lzvykwDzzc"
-
-    if (ok:=FindText(X, Y, 299-150000, 527-150000, 299+150000, 527+150000, 0, 0, Text))
-    {
-     FindText().Click(X, Y, "L")
-    }
-  }
-  else if (x = "n") {
-    Text:="|<NBDC>*183$10.sTVz7yTxwrlz7wDkS"
-
-    if (ok:=FindText(X, Y, 346-150000, 527-150000, 346+150000, 527+150000, 0, 0, Text))
-    {
-     FindText().Click(X, Y, "L")
-    }
-  }
-  else if (x = "m") {
-    Text:="|<MBDC>*175$11.k7kTUzXz7vPrrbD4S0s"
-
-    if (ok:=FindText(X, Y, 392-150000, 527-150000, 392+150000, 527+150000, 0, 0, Text))
-    {
-     FindText().Click(X, Y, "L")
-    }
-  }
-  else {
-    return
+      Gui, Show
+      Gui, Add, Button, Default, OK
+      BotãoOK:
+      InputBox, user, Digite o código do operador, Prompt, , 230, 100, width/2, height/2,  
+      InputBox, pass, Digite a palavra passe, Prompt, HIDE, 200, 100, width/2, height/2, 
+      if (user <> "") && (pass <> ""){
+          FileAppend , %user% %A_Tab% %pass%, settings.txt
+          Gui, Destroy
+          return
+      }
+      else {
+          inv := "inválido(s)"
+          MsgBox, Operador e/ou senha %inv%, tente novamente.
+          return
+      }
+      Gui, Destroy
+      return
   }
 }
 
-; DEFINIÇÃO E INPUT DE USUÁRIO
-^1::
-Text:="|<AskENTRADA>*180$145.0000000M000k000000000Q00TU0k000A000M000000000C00A20w110C400Q80000440U70061wT7nszDU1yT03syDbtwTbXzsr630CPUk0rRU1aNgnUaRqNlwNX1UTMls0ljs0nArtkDgvAkkAlUkTgPw0Mrs0NaPwkDqRaMM6MkMBrRa06vU0AnBUM6vinADnASA7tyz03wy07lwTA3wzDa3t4641cO4U0o600kw720oB310000000000000000M00000000000000000000000A00000000U"
 
-if (ok:=FindText(X, Y, 80-150000, 551-150000, 80+150000, 551+150000, 0, 0, Text))
-{
-  Text:="|<Entra>*120$36.000000Ds0800Ds0A00A1MSoMA3yyzyDnaQsaDn6Qk6A36QkyA36QlyDv6ClyDv6Cly000000U"
-
-  if (ok:=FindText(X, Y, 650-150000, 175-150000, 650+150000, 175+150000, 0, 0, Text))
-  {
-     FindText().Click(X, Y, "L")
-  }
-}
-
-FileRead, credenciais, settings.txt
-
-if FileExist("settings.txt") {
-    FileRead, credenciais, settings.txt
-    account := StrSplit(credenciais, A_Tab)
-
-    User1 := SubStr(account.1, 1, 1)
-    User2 := SubStr(account.1, 2, 1)
-    User3 := SubStr(account.1, 3, 1)
-    User4 := SubStr(account.1, 4, 1)
-    User5 := SubStr(account.1, 5, 1)
-    User6 := SubStr(account.1, 6, 1)
-
-    Teclar(User1)
-    Teclar(User2)
-    Teclar(User3)
-    Teclar(User4)
-    Teclar(User5)
-    Teclar(User6)
-
-    Text:="|<Entra>*120$36.000000Ds0800Ds0A00A1MSoMA3yyzyDnaQsaDn6Qk6A36QkyA36QlyDv6ClyDv6Cly000000U"
-    
-    if (ok:=FindText(X, Y, 650-150000, 175-150000, 650+150000, 175+150000, 0, 0, Text))
-    {
-    FindText().Click(X, Y, "L")
-    }
-
-    Pass1 := SubStr(account.2, 2, 1)
-    Pass2 := SubStr(account.2, 3, 1)
-    Pass3 := SubStr(account.2, 4, 1)
-    Pass4 := SubStr(account.2, 5, 1)
-    Pass5 := SubStr(account.2, 6, 1)
-    Pass6 := SubStr(account.2, 7, 1)
-
-    Teclar(Pass1)
-    Teclar(Pass2)
-    Teclar(Pass3)
-    Teclar(Pass4)
-    Teclar(Pass5)
-    Teclar(Pass6)
-
-    Text:="|<Entra>*120$36.000000Ds0800Ds0A00A1MSoMA3yyzyDnaQsaDn6Qk6A36QkyA36QlyDv6ClyDv6Cly000000U"
-    if (ok:=FindText(X, Y, 650-150000, 175-150000, 650+150000, 175+150000, 0, 0, Text))
-    {
-    FindText().Click(X, Y, "L")
-    }
-}
-else {
-    Gui, Show
-    Gui, Add, Button, Default, OK
-    BotãoOK:
-    InputBox, user, Digite o código do operador, Prompt, , 230, 100, width/2, height/2,  
-    InputBox, pass, Digite a palavra passe, Prompt, HIDE, 200, 100, width/2, height/2, 
-    if (user <> "") && (pass <> ""){
-        FileAppend , %user% %A_Tab% %pass%, settings.txt
-        Gui, Destroy
-        return
-    }
-    else {
-        inv := "inválido(s)"
-        MsgBox, Operador e/ou senha %inv%, tente novamente.
-        return
-    }
-    Gui, Destroy
-    return
-}
-return
 
 ; -------------------
 ; INPUT AUTOMATIZADO
 ; -------------------
+
 ^v::
 Gui, Show 
 Gui, Add, Button, Default, OK
@@ -548,107 +454,18 @@ If ErrorLevel {
 }
 Else {
 Gui, Submit
-Num1 := SubStr(OutputString, 1, 1)
-Num2 := SubStr(OutputString, 2, 1)
-Num3 := SubStr(OutputString, 3, 1)
-Num4 := SubStr(OutputString, 4, 1)
-Num5 := SubStr(OutputString, 5, 1)
-Num6 := SubStr(OutputString, 6, 1)
-Num7 := SubStr(OutputString, 7, 1)
-Num8 := SubStr(OutputString, 8, 1)
-Num9 := SubStr(OutputString, 9, 1)
-Num10 := SubStr(OutputString, 10, 1)
-Num11 := SubStr(OutputString, 11, 1)
-Num12 := SubStr(OutputString, 12, 1)
-Num13 := SubStr(OutputString, 13, 1)
-Num14 := SubStr(OutputString, 14, 1)
-Num15 := SubStr(OutputString, 15, 1)
-Num16 := SubStr(OutputString, 16, 1)
-Num17 := SubStr(OutputString, 17, 1)
-Num18 := SubStr(OutputString, 18, 1)
-Num19 := SubStr(OutputString, 19, 1)
-Num20 := SubStr(OutputString, 20, 1)
-Num21 := SubStr(OutputString, 21, 1)
-Num22 := SubStr(OutputString, 22, 1)
-Num23 := SubStr(OutputString, 23, 1)
-Num24 := SubStr(OutputString, 24, 1)
-Num25 := SubStr(OutputString, 25, 1)
-Num26 := SubStr(OutputString, 26, 1)
 
 Text:="|<BDC>*147$128.00C000001k0Q000000000D03U00000Q7z0000000003k0s0000A73xk000000000w0C0000300w0000000000D03U0001k0C00000000003kSsDUnkzbDtkT0w0w3s3swDy7wDyTtnzQDszkzVz3zD7zXzXzXyQTb7yDwTwzkzvlktssswQ73Vlk17b04CSDwsCTzC771ksQs00vk03b1zC3bznVlkQC7C01ys07tkTnUtk0sQQ73VnU3zi07yQ7wsCQ0C771ksQs1svk3Xb1zD3bU3VlkQC7D0QCQ1ktkzlzszssQTb3Vlzb7bzQSTywTy7yC73tksQDtzsznzXzj3vUy3VkyQC71wDi7kSsDW"
 
 if (ok:=FindText(X, Y, 2102-150000, -85-150000, 2102+150000, -85+150000, 0, 0, Text))
 {
-    TeclarBDC(Num1)
-    TeclarBDC(Num2)
-    TeclarBDC(Num3)
-    TeclarBDC(Num4)
-    TeclarBDC(Num5)
-    TeclarBDC(Num6)
-    TeclarBDC(Num7)
-    TeclarBDC(Num8)
-    TeclarBDC(Num9)
-    TeclarBDC(Num10)
-    TeclarBDC(Num11)
-    TeclarBDC(Num12)
-    TeclarBDC(Num13)
-    TeclarBDC(Num14)
-    TeclarBDC(Num15)
-    TeclarBDC(Num16)
-    TeclarBDC(Num17)
-    TeclarBDC(Num18)
-    TeclarBDC(Num19)
-    TeclarBDC(Num20)
-    TeclarBDC(Num21)
-    TeclarBDC(Num22)
-    TeclarBDC(Num23)
-    TeclarBDC(Num24)
-    TeclarBDC(Num25)
-    TeclarBDC(Num26)
-
-    Text:="|<Entra>*120$36.000000Ds0800Ds0A00A1MSoMA3yyzyDnaQsaDn6Qk6A36QkyA36QlyDv6ClyDv6Cly000000U"
-
-    if (ok:=FindText(X, Y, 650-150000, 175-150000, 650+150000, 175+150000, 0, 0, Text))
-    {
-    FindText().Click(X, Y, "L")
-    }
+    Gui, Show
+    MsgBox "BDC NAO CONFIGURADA"
     return
 }
 
-Else {
-        Teclar(Num1)
-        Teclar(Num2)
-        Teclar(Num3)
-        Teclar(Num4)
-        Teclar(Num5)
-        Teclar(Num6)
-        Teclar(Num7)
-        Teclar(Num8)
-        Teclar(Num9)
-        Teclar(Num10)
-        Teclar(Num11)
-        Teclar(Num12)
-        Teclar(Num13)
-        Teclar(Num14)
-        Teclar(Num15)
-        Teclar(Num16)
-        Teclar(Num17)
-        Teclar(Num18)
-        Teclar(Num19)
-        Teclar(Num20)
-        Teclar(Num21)
-        Teclar(Num22)
-        Teclar(Num23)
-        Teclar(Num24)
-        Teclar(Num25)
-        Teclar(Num26)
-
-        Text:="|<Entra>*120$36.000000Ds0800Ds0A00A1MSoMA3yyzyDnaQsaDn6Qk6A36QkyA36QlyDv6ClyDv6Cly000000U"
-
-        if (ok:=FindText(X, Y, 650-150000, 175-150000, 650+150000, 175+150000, 0, 0, Text))
-        {
-        FindText().Click(X, Y, "L")
-        }
+else {
+        Paste(OutputString)
     }
 }
 return
@@ -658,6 +475,7 @@ return
 INPUT AUTOMATIZADO CARTÃO DÁ
 ----------------
 */
+
 ^Numpad0::
 ^0::
 Gui, Show 
@@ -667,88 +485,69 @@ InputBox, OutputDa, Digite o código Dá, Prompt, , 250, 100, width/2, height/2,
 InputBox, OutputserieDa, Digite o código de série Dá, Prompt, , 250, 100, width/2, height/2, Locale, Timeout,
 Gui, Submit 
 
-Da1 := SubStr(OutputDa, 1, 1)
-Da2 := SubStr(OutputDa, 2, 1)
-Da3 := SubStr(OutputDa, 3, 1)
-Da4 := SubStr(OutputDa, 4, 1)
-Da5 := SubStr(OutputDa, 5, 1)
-Da6 := SubStr(OutputDa, 6, 1)
-Da7 := SubStr(OutputDa, 7, 1)
-Da8 := SubStr(OutputDa, 8, 1)
-Da9 := SubStr(OutputDa, 9, 1)
-Da10 := SubStr(OutputDa, 10, 1)
-Da11 := SubStr(OutputDa, 11, 1)
-Da12 := SubStr(OutputDa, 12, 1)
-Da13 := SubStr(OutputDa, 13, 1)
-Da14 := SubStr(OutputDa, 14, 1)
-Da15 := SubStr(OutputDa, 15, 1)
-Da16 := SubStr(OutputDa, 16, 1)
-Da17 := SubStr(OutputDa, 17, 1)
-Da18 := SubStr(OutputDa, 18, 1)
-Da19 := SubStr(OutputDa, 19, 1)
+Text:="|<LeiaDa>*184$106.001U000000000000030020000000M0000y0A0UM600MA4Xs8603wAkDXly07lwzDXsy0ANz0r70M0N4nUM9aM0lYw3wQDU3UDC1USNU36TkDlly0C3ws67ta0APz0k76M0NAnUMRaM0vgznsyTU1wzC1xyDU3wzT33sm01VoE3VcM071q"
 
-Loop, 2 {
-Teclar(Da1)
-Teclar(Da2)
-Teclar(Da3)
-Teclar(Da4)
-Teclar(Da5)
-Teclar(Da6)
-Teclar(Da7)
-Teclar(Da8)
-Teclar(Da9)
-Teclar(Da10)
-Teclar(Da11)
-Teclar(Da12)
-Teclar(Da13)
-Teclar(Da14)
-Teclar(Da15)
-Teclar(Da16)
-Teclar(Da17)
-Teclar(Da18)
-Teclar(Da19)
+if (ok:=FindText(X, Y, 71-150000, 538-150000, 71+150000, 538+150000, 0, 0, Text))
+{
+    EntraPadrao:="|<Entra>*120$36.000000Ds0800Ds0A00A1MSoMA3yyzyDnaQsaDn6Qk6A36QkyA36QlyDv6ClyDv6Cly000000U"
+    EntraRocky:="|<EntraRocky>*124$34.zU0U03w0600A1MyYQkDvvzvwtaC1jn6Mk6kANX3z0laANzv6QlbzgMv7y"
+    Contador:=0
 
-  Text:="|<Entra>*120$36.000000Ds0800Ds0A00A1MSoMA3yyzyDnaQsaDn6Qk6A36QkyA36QlyDv6ClyDv6Cly000000U"
+    if (ok:=FindText(X, Y, 650-150000, 175-150000, 650+150000, 175+150000, 0, 0, EntraPadrao))
+    {
+      if Contador <> 1 
+      {
+        FindText().Click(X, Y, "L")
+        Contador++
+      }
+    }
+    else (ok:=FindText(X, Y, 650-150000, 175-150000, 650+150000, 175+150000, 0, 0, EntraRocky))
+    {
+      if Contador <> 1 
+      {
+        FindText().Click(X, Y, "L")
+        Contador++
+      }
+    }
 
-  if (ok:=FindText(X, Y, 650-150000, 175-150000, 650+150000, 175+150000, 0, 0, Text))
-  {
-    FindText().Click(X, Y, "L")
-  }
+    Login()
 }
 
-SDa1 := SubStr(OutputserieDa, 1, 1)
-SDa2 := SubStr(OutputserieDa, 2, 1)
-SDa3 := SubStr(OutputserieDa, 3, 1)
-SDa4 := SubStr(OutputserieDa, 4, 1)
-SDa5 := SubStr(OutputserieDa, 5, 1)
-SDa6 := SubStr(OutputserieDa, 6, 1)
-SDa7 := SubStr(OutputserieDa, 7, 1)
-SDa8 := SubStr(OutputserieDa, 8, 1)
-SDa9 := SubStr(OutputserieDa, 9, 1)
-SDa10 := SubStr(OutputserieDa, 10, 1)
+Loop, 2 {
+    Paste(OutputDa)
+}
 
 Loop, 2 {
-Teclar(SDa1)
-Teclar(SDa2)
-Teclar(SDa3)
-Teclar(SDa4)
-Teclar(SDa5)
-Teclar(SDa6)
-Teclar(SDa7)
-Teclar(SDa8)
-Teclar(SDa9)
-Teclar(SDa10)
-
-  Text:="|<Entra>*120$36.000000Ds0800Ds0A00A1MSoMA3yyzyDnaQsaDn6Qk6A36QkyA36QlyDv6ClyDv6Cly000000U"
-
-  if (ok:=FindText(X, Y, 650-150000, 175-150000, 650+150000, 175+150000, 0, 0, Text))
-  {
-    FindText().Click(X, Y, "L")
-  }
-
+    Paste(OutputserieDa)
 }
 
 return
+
+; DEFINIÇÃO E INPUT DE USUÁRIO
+^1::
+EntraPadrao:="|<Entra>*120$36.000000Ds0800Ds0A00A1MSoMA3yyzyDnaQsaDn6Qk6A36QkyA36QlyDv6ClyDv6Cly000000U"
+EntraRocky:="|<EntraRocky>*124$34.zU0U03w0600A1MyYQkDvvzvwtaC1jn6Mk6kANX3z0laANzv6QlbzgMv7y"
+Contador:=0
+
+if (ok:=FindText(X, Y, 650-150000, 175-150000, 650+150000, 175+150000, 0, 0, EntraPadrao))
+{
+  if Contador <> 1 
+  {
+    FindText().Click(X, Y, "L")
+    Contador++
+  }
+}
+else (ok:=FindText(X, Y, 650-150000, 175-150000, 650+150000, 175+150000, 0, 0, EntraRocky))
+{
+  if Contador <> 1 
+  {
+    FindText().Click(X, Y, "L")
+    Contador++
+  }
+}
+Login()
+return
+
 /*
 ----------------
 CARTÃO DÁ
@@ -757,423 +556,97 @@ CARTÃO DÁ
 
 ^Numpad2::
 ^2::
+LeiaDaPadrao:="|<LeiaDa>*184$106.001U000000000000030020000000M0000y0A0UM600MA4Xs8603wAkDXly07lwzDXsy0ANz0r70M0N4nUM9aM0lYw3wQDU3UDC1USNU36TkDlly0C3ws67ta0APz0k76M0NAnUMRaM0vgznsyTU1wzC1xyDU3wzT33sm01VoE3VcM071q"
+LeiaDaRocky:="|<LeiaDaRocky>*182$107.000k00000000000001U01U00000060000DU30460U02118S20U0TV60yS7k0TDXtwT7k0nDg3AA9U1qHa1k7Rk1aHM7sMDU30TA30ylU3ATkA0lr061yM63hX06PjkM1XC0A6QkCCvi0AqTwTDbw0DbtUDDns0TDvsQD3E0A6W0AB300w6c"
+if (ok:=FindText(X, Y, 71-150000, 538-150000, 71+150000, 538+150000, 0, 0, LeiaDaPadrao) or (ok:=FindText(X, Y, 71-150000, 538-150000, 71+150000, 538+150000, 0, 0, LeiaDaRocky)))
+{
+    EntraPadrao:="|<Entra>*120$36.000000Ds0800Ds0A00A1MSoMA3yyzyDnaQsaDn6Qk6A36QkyA36QlyDv6ClyDv6Cly000000U"
+    EntraRocky:="|<EntraRocky>*124$34.zU0U03w0600A1MyYQkDvvzvwtaC1jn6Mk6kANX3z0laANzv6QlbzgMv7y"
+    Contador:=0
+
+    if (ok:=FindText(X, Y, 650-150000, 175-150000, 650+150000, 175+150000, 0, 0, EntraPadrao))
+    {
+      if Contador <> 1 
+      {
+        FindText().Click(X, Y, "L")
+        Contador++
+      }
+    }
+    else (ok:=FindText(X, Y, 650-150000, 175-150000, 650+150000, 175+150000, 0, 0, EntraRocky))
+    {
+      if Contador <> 1 
+      {
+        FindText().Click(X, Y, "L")
+        Contador++
+      }
+    }
+
+    Login()
+}
+
+; Cartão dá 1:
 Loop, 2 {
-Text := "|<Numpad6>*162$11.003U60M1U7sDsstUn1b77QDs2004"
-
-if (ok := FindText(X, Y, 565 - 150000, 249 - 150000, 565 + 150000, 249 + 150000, 0, 0, Text))
-{
-  FindText().Click(X, Y, "L")
-}
-
-Text := "|<Numpad3>*169$11.007UzVXb70A1s3k3k3W7CCDsDU04"
-
-if (ok := FindText(X, Y, 565 - 150000, 322 - 150000, 565 + 150000, 322 + 150000, 0, 0, Text))
-{
-  FindText().Click(X, Y, "L")
-}
-
-Text := "|<Numpad6>*162$11.003U60M1U7sDsstUn1b77QDs2004"
-
-if (ok := FindText(X, Y, 565 - 150000, 249 - 150000, 565 + 150000, 249 + 150000, 0, 0, Text))
-{
-  FindText().Click(X, Y, "L")
-}
-
-Text := "|<Numpad3>*169$11.007UzVXb70A1s3k3k3W7CCDsDU04"
-
-if (ok := FindText(X, Y, 565 - 150000, 322 - 150000, 565 + 150000, 322 + 150000, 0, 0, Text))
-{
-  FindText().Click(X, Y, "L")
-}
-
-Text := "|<Numpad5>*161$10.00z30Q1U7sTk3UC0M3aQTUM00U"
-
-if (ok := FindText(X, Y, 481 - 150000, 249 - 150000, 481 + 150000, 249 + 150000, 0, 0, Text))
-{
-  FindText().Click(X, Y, "L")
-}
-
-Text := "|<Numpad2>*166$11.007UTVnX70C0Q1k30C0s3UDwzs04"
-
-if (ok := FindText(X, Y, 546 - 150000, 338 - 150000, 546 + 150000, 338 + 150000, 0, 0, Text))
-{
-  FindText().Click(X, Y, "L")
-}
-
-Text := "|<Numpad1>*161$11.0030C1w7s4k1U3060A0M0k7sTk04"
-
-if (ok := FindText(X, Y, 461 - 150000, 338 - 150000, 461 + 150000, 338 + 150000, 0, 0, Text))
-{
-  FindText().Click(X, Y, "L")
-}
-
-Text := "|<Numpad8>*162$11.00DUzVXX76C7sTllnVb3CCDs7U04"
-
-if (ok := FindText(X, Y, 480 - 150000, 175 - 150000, 480 + 150000, 175 + 150000, 0, 0, Text))
-{
-  FindText().Click(X, Y, "L")
-}
-
-Text := "|<Numpad9>*164$11.00DUzXXa7CCQQTkTU60M1k70A004"
-
-if (ok := FindText(X, Y, 565 - 150000, 175 - 150000, 565 + 150000, 175 + 150000, 0, 0, Text))
-{
-  FindText().Click(X, Y, "L")
-}
-
-Text := "|<Numpad2>*166$11.007UTVnX70C0Q1k30C0s3UDwzs04"
-
-if (ok := FindText(X, Y, 546 - 150000, 338 - 150000, 546 + 150000, 338 + 150000, 0, 0, Text))
-{
-  FindText().Click(X, Y, "L")
-}
-
-Text := "|<Numpad6>*162$11.003U60M1U7sDsstUn1b77QDs2004"
-
-if (ok := FindText(X, Y, 565 - 150000, 249 - 150000, 565 + 150000, 249 + 150000, 0, 0, Text))
-{
-  FindText().Click(X, Y, "L")
-}
-
-Text := "|<Numpad7>*165$11.00ztzk30C0M1k30C0M1k30C0M004"
-
-if (ok := FindText(X, Y, 395 - 150000, 175 - 150000, 395 + 150000, 175 + 150000, 0, 0, Text))
-{
-  FindText().Click(X, Y, "L")
-}
-
-Text := "|<Numpad5>*161$10.00z30Q1U7sTk3UC0M3aQTUM00U"
-
-if (ok := FindText(X, Y, 481 - 150000, 249 - 150000, 481 + 150000, 249 + 150000, 0, 0, Text))
-{
-  FindText().Click(X, Y, "L")
-}
-
-Text := "|<Numpad0>*169$12.003k7wCQACQCQCQCQCQCAACQ7s3k00U"
-
-if (ok := FindText(X, Y, 395 - 150000, 396 - 150000, 395 + 150000, 396 + 150000, 0, 0, Text))
-{
-  FindText().Click(X, Y, "L")
-}
-
-Text := "|<Numpad9>*164$11.00DUzXXa7CCQQTkTU60M1k70A004"
-
-if (ok := FindText(X, Y, 565 - 150000, 175 - 150000, 565 + 150000, 175 + 150000, 0, 0, Text))
-{
-  FindText().Click(X, Y, "L")
-}
-
-Text := "|<Numpad3>*169$11.007UzVXb70A1s3k3k3W7CCDsDU04"
-
-if (ok := FindText(X, Y, 565 - 150000, 322 - 150000, 565 + 150000, 322 + 150000, 0, 0, Text))
-{
-  FindText().Click(X, Y, "L")
-}
-
-Text := "|<Numpad7>*165$11.00ztzk30C0M1k30C0M1k30C0M004"
-
-if (ok := FindText(X, Y, 395 - 150000, 175 - 150000, 395 + 150000, 175 + 150000, 0, 0, Text))
-{
-  FindText().Click(X, Y, "L")
-}
-
-Text := "|<Numpad0>*169$12.003k7wCQACQCQCQCQCQCAACQ7s3k00U"
-
-if (ok := FindText(X, Y, 395 - 150000, 396 - 150000, 395 + 150000, 396 + 150000, 0, 0, Text))
-{
-  FindText().Click(X, Y, "L")
-}
-
-Text := "|<Numpad8>*162$11.00DUzVXX76C7sTllnVb3CCDs7U04"
-
-if (ok := FindText(X, Y, 480 - 150000, 175 - 150000, 480 + 150000, 175 + 150000, 0, 0, Text))
-{
-  FindText().Click(X, Y, "L")
-}
-
-Text := "|<Entra>*120$36.000000Ds0800Ds0A00A1MSoMA3yyzyDnaQsaDn6Qk6A36QkyA36QlyDv6ClyDv6Cly000000U"
-
-if (ok := FindText(X, Y, 650 - 150000, 175 - 150000, 650 + 150000, 175 + 150000, 0, 0, Text))
-{
-  FindText().Click(X, Y, "L")
-}
+Paste(6363521892675093708)
 }
 
 Sleep, 50
 
 Loop, 2 {
-Text:="|<Numpad1>*161$11.0030C1w7s4k1U3060A0M0k7sTk04"
-
-if (ok:=FindText(X, Y, 461-150000, 338-150000, 461+150000, 338+150000, 0, 0, Text))
-{
-   FindText().Click(X, Y, "L")
-}
-
-Text:="|<Numpad8>*162$11.00DUzVXX76C7sTllnVb3CCDs7U04"
-
-if (ok:=FindText(X, Y, 480-150000, 175-150000, 480+150000, 175+150000, 0, 0, Text))
-{
-   FindText().Click(X, Y, "L")
-}
-
-Text:="|<Numpad9>*164$11.00DUzXXa7CCQQTkTU60M1k70A004"
-
-if (ok:=FindText(X, Y, 565-150000, 175-150000, 565+150000, 175+150000, 0, 0, Text))
-{
-   FindText().Click(X, Y, "L")
-}
-
-Text:="|<NumpadTriple0>*164$33.000000S1w3k7wTlz1lb7AQACsvVVVq3QAQ7kT1nUy3sCQ7kT1lVq3QAACsvVVnX6AQ7wTlz0S0s3k000004"
-
-if (ok:=FindText(X, Y, 565-150000, 396-150000, 565+150000, 396+150000, 0, 0, Text))
-{
-   FindText().Click(X, Y, "L")
-}
-
-Text:="|<NumpadDouble0>*164$23.00007kD0Tlz0ln73Vi663QCA7kQMDUskTVlUr33Xi637CQ7wDk3UD00004"
-
-if (ok:=FindText(X, Y, 480-150000, 396-150000, 480+150000, 396+150000, 0, 0, Text))
-{
-   FindText().Click(X, Y, "L")
-}
-
-Text:="|<Numpad3>*169$11.007UzVXb70A1s3k3k3W7CCDsDU04"
-
-if (ok:=FindText(X, Y, 565-150000, 322-150000, 565+150000, 322+150000, 0, 0, Text))
-{
-   FindText().Click(X, Y, "L")
-}
-
-Text:="|<Numpad0>*169$12.003k7wCQACQCQCQCQCQCAACQ7s3k00U"
-
-if (ok:=FindText(X, Y, 395-150000, 396-150000, 395+150000, 396+150000, 0, 0, Text))
-{
-   FindText().Click(X, Y, "L")
-}
-
-Text:="|<Entra>*120$36.000000Ds0800Ds0A00A1MSoMA3yyzyDnaQsaDn6Qk6A36QkyA36QlyDv6ClyDv6Cly000000U"
-
-if (ok:=FindText(X, Y, 650-150000, 175-150000, 650+150000, 175+150000, 0, 0, Text))
-{
-   FindText().Click(X, Y, "L")
-}
-
+Paste(1890000030)
 }
 
 return
+
 /*
 ----------------
  CARTÃO DÁ 2
 ----------------
 */
+
 ^Numpad3::
 ^3::
+LeiaDaPadrao:="|<LeiaDa>*184$106.001U000000000000030020000000M0000y0A0UM600MA4Xs8603wAkDXly07lwzDXsy0ANz0r70M0N4nUM9aM0lYw3wQDU3UDC1USNU36TkDlly0C3ws67ta0APz0k76M0NAnUMRaM0vgznsyTU1wzC1xyDU3wzT33sm01VoE3VcM071q"
+LeiaDaRocky:="|<LeiaDaRocky>*182$107.000k00000000000001U01U00000060000DU30460U02118S20U0TV60yS7k0TDXtwT7k0nDg3AA9U1qHa1k7Rk1aHM7sMDU30TA30ylU3ATkA0lr061yM63hX06PjkM1XC0A6QkCCvi0AqTwTDbw0DbtUDDns0TDvsQD3E0A6W0AB300w6c"
+if (ok:=FindText(X, Y, 71-150000, 538-150000, 71+150000, 538+150000, 0, 0, LeiaDaPadrao) or (ok:=FindText(X, Y, 71-150000, 538-150000, 71+150000, 538+150000, 0, 0, LeiaDaRocky)))
+{
+    EntraPadrao:="|<Entra>*120$36.000000Ds0800Ds0A00A1MSoMA3yyzyDnaQsaDn6Qk6A36QkyA36QlyDv6ClyDv6Cly000000U"
+    EntraRocky:="|<EntraRocky>*124$34.zU0U03w0600A1MyYQkDvvzvwtaC1jn6Mk6kANX3z0laANzv6QlbzgMv7y"
+    Contador:=0
+
+    if (ok:=FindText(X, Y, 650-150000, 175-150000, 650+150000, 175+150000, 0, 0, EntraPadrao))
+    {
+      if Contador <> 1 
+      {
+        FindText().Click(X, Y, "L")
+        Contador++
+      }
+    }
+    else (ok:=FindText(X, Y, 650-150000, 175-150000, 650+150000, 175+150000, 0, 0, EntraRocky))
+    {
+      if Contador <> 1 
+      {
+        FindText().Click(X, Y, "L")
+        Contador++
+      }
+    }
+
+    Login()
+}
+
+; Cartão dá 2:
 Loop, 2 {
-Text:="|<Numpad6>*162$11.003U60M1U7sDsstUn1b77QDs2004"
-
-if (ok:=FindText(X, Y, 565-150000, 249-150000, 565+150000, 249+150000, 0, 0, Text))
-{
-   FindText().Click(X, Y, "L")
-}
-
-Text:="|<Numpad3>*169$11.007UzVXb70A1s3k3k3W7CCDsDU04"
-
-if (ok:=FindText(X, Y, 565-150000, 322-150000, 565+150000, 322+150000, 0, 0, Text))
-{
-   FindText().Click(X, Y, "L")
-}
-
-Text:="|<Numpad6>*162$11.003U60M1U7sDsstUn1b77QDs2004"
-
-if (ok:=FindText(X, Y, 565-150000, 249-150000, 565+150000, 249+150000, 0, 0, Text))
-{
-   FindText().Click(X, Y, "L")
-}
-
-Text:="|<Numpad3>*169$11.007UzVXb70A1s3k3k3W7CCDsDU04"
-
-if (ok:=FindText(X, Y, 565-150000, 322-150000, 565+150000, 322+150000, 0, 0, Text))
-{
-   FindText().Click(X, Y, "L")
-}
-
-Text:="|<Numpad5>*161$10.00z30Q1U7sTk3UC0M3aQTUM00U"
-
-if (ok:=FindText(X, Y, 481-150000, 249-150000, 481+150000, 249+150000, 0, 0, Text))
-{
-   FindText().Click(X, Y, "L")
-}
-
-Text:="|<Numpad2>*166$11.007UTVnX70C0Q1k30C0s3UDwzs04"
-
-if (ok:=FindText(X, Y, 546-150000, 338-150000, 546+150000, 338+150000, 0, 0, Text))
-{
-   FindText().Click(X, Y, "L")
-}
-
-Text:="|<Numpad5>*161$10.00z30Q1U7sTk3UC0M3aQTUM00U"
-
-if (ok:=FindText(X, Y, 481-150000, 249-150000, 481+150000, 249+150000, 0, 0, Text))
-{
-   FindText().Click(X, Y, "L")
-}
-
-Text:="|<Numpad0>*169$12.003k7wCQACQCQCQCQCQCAACQ7s3k00U"
-
-if (ok:=FindText(X, Y, 395-150000, 396-150000, 395+150000, 396+150000, 0, 0, Text))
-{
-   FindText().Click(X, Y, "L")
-}
-
-Text:="|<Numpad2>*166$11.007UTVnX70C0Q1k30C0s3UDwzs04"
-
-if (ok:=FindText(X, Y, 546-150000, 338-150000, 546+150000, 338+150000, 0, 0, Text))
-{
-   FindText().Click(X, Y, "L")
-}
-
-Text:="|<Numpad8>*162$11.00DUzVXX76C7sTllnVb3CCDs7U04"
-
-if (ok:=FindText(X, Y, 480-150000, 175-150000, 480+150000, 175+150000, 0, 0, Text))
-{
-   FindText().Click(X, Y, "L")
-}
-
-Text:="|<Numpad5>*161$10.00z30Q1U7sTk3UC0M3aQTUM00U"
-
-if (ok:=FindText(X, Y, 481-150000, 249-150000, 481+150000, 249+150000, 0, 0, Text))
-{
-   FindText().Click(X, Y, "L")
-}
-
-Text:="|<Numpad0>*169$12.003k7wCQACQCQCQCQCQCAACQ7s3k00U"
-
-if (ok:=FindText(X, Y, 395-150000, 396-150000, 395+150000, 396+150000, 0, 0, Text))
-{
-   FindText().Click(X, Y, "L")
-}
-
-Text:="|<Numpad2>*166$11.007UTVnX70C0Q1k30C0s3UDwzs04"
-
-if (ok:=FindText(X, Y, 546-150000, 338-150000, 546+150000, 338+150000, 0, 0, Text))
-{
-   FindText().Click(X, Y, "L")
-}
-
-Text:="|<Numpad9>*164$11.00DUzXXa7CCQQTkTU60M1k70A004"
-
-if (ok:=FindText(X, Y, 565-150000, 175-150000, 565+150000, 175+150000, 0, 0, Text))
-{
-   FindText().Click(X, Y, "L")
-}
-
-Text:="|<Numpad1>*161$11.0030C1w7s4k1U3060A0M0k7sTk04"
-
-if (ok:=FindText(X, Y, 461-150000, 338-150000, 461+150000, 338+150000, 0, 0, Text))
-{
-   FindText().Click(X, Y, "L")
-}
-
-Text:="|<Numpad5>*161$10.00z30Q1U7sTk3UC0M3aQTUM00U"
-
-if (ok:=FindText(X, Y, 481-150000, 249-150000, 481+150000, 249+150000, 0, 0, Text))
-{
-   FindText().Click(X, Y, "L")
-}
-
-Text:="|<Numpad3>*169$11.007UzVXb70A1s3k3k3W7CCDsDU04"
-
-if (ok:=FindText(X, Y, 565-150000, 322-150000, 565+150000, 322+150000, 0, 0, Text))
-{
-   FindText().Click(X, Y, "L")
-}
-
-Text:="|<Numpad9>*164$11.00DUzXXa7CCQQTkTU60M1k70A004"
-
-if (ok:=FindText(X, Y, 565-150000, 175-150000, 565+150000, 175+150000, 0, 0, Text))
-{
-   FindText().Click(X, Y, "L")
-}
-
-Text:="|<Numpad3>*169$11.007UzVXb70A1s3k3k3W7CCDsDU04"
-
-if (ok:=FindText(X, Y, 565-150000, 322-150000, 565+150000, 322+150000, 0, 0, Text))
-{
-   FindText().Click(X, Y, "L")
-}
-
-Text:="|<Entra>*120$36.000000Ds0800Ds0A00A1MSoMA3yyzyDnaQsaDn6Qk6A36QkyA36QlyDv6ClyDv6Cly000000U"
-
-if (ok:=FindText(X, Y, 650-150000, 175-150000, 650+150000, 175+150000, 0, 0, Text))
-{
-   FindText().Click(X, Y, "L")
-}
+Paste(6363525028502915393)
 }
 
 Loop, 2{
-Text:="|<Numpad5>*161$10.00z30Q1U7sTk3UC0M3aQTUM00U"
-
-if (ok:=FindText(X, Y, 481-150000, 249-150000, 481+150000, 249+150000, 0, 0, Text))
-{
-   FindText().Click(X, Y, "L")
+Paste(5020000027)
 }
-
-Text:="|<Numpad0>*169$12.003k7wCQACQCQCQCQCQCAACQ7s3k00U"
-
-if (ok:=FindText(X, Y, 395-150000, 396-150000, 395+150000, 396+150000, 0, 0, Text))
-{
-   FindText().Click(X, Y, "L")
-}
-
-Text:="|<Numpad2>*166$11.007UTVnX70C0Q1k30C0s3UDwzs04"
-
-if (ok:=FindText(X, Y, 546-150000, 338-150000, 546+150000, 338+150000, 0, 0, Text))
-{
-   FindText().Click(X, Y, "L")
-}
-
-Text:="|<NumpadTriple0>*164$33.000000S1w3k7wTlz1lb7AQACsvVVVq3QAQ7kT1nUy3sCQ7kT1lVq3QAACsvVVnX6AQ7wTlz0S0s3k000004"
-
-if (ok:=FindText(X, Y, 565-150000, 396-150000, 565+150000, 396+150000, 0, 0, Text))
-{
-   FindText().Click(X, Y, "L")
-}
-
-Text:="|<NumpadDouble0>*164$23.00007kD0Tlz0ln73Vi663QCA7kQMDUskTVlUr33Xi637CQ7wDk3UD00004"
-
-if (ok:=FindText(X, Y, 480-150000, 396-150000, 480+150000, 396+150000, 0, 0, Text))
-{
-   FindText().Click(X, Y, "L")
-}
-
-Text:="|<Numpad2>*166$11.007UTVnX70C0Q1k30C0s3UDwzs04"
-
-if (ok:=FindText(X, Y, 546-150000, 338-150000, 546+150000, 338+150000, 0, 0, Text))
-{
-   FindText().Click(X, Y, "L")
-}
-
-Text:="|<Numpad7>*165$11.00ztzk30C0M1k30C0M1k30C0M004"
-
-if (ok:=FindText(X, Y, 395-150000, 175-150000, 395+150000, 175+150000, 0, 0, Text))
-{
-   FindText().Click(X, Y, "L")
-}
-
-Text:="|<Entra>*120$36.000000Ds0800Ds0A00A1MSoMA3yyzyDnaQsaDn6Qk6A36QkyA36QlyDv6ClyDv6Cly000000U"
-
-if (ok:=FindText(X, Y, 650-150000, 175-150000, 650+150000, 175+150000, 0, 0, Text))
-{
-   FindText().Click(X, Y, "L")
-}
-}
-
 return
 
-;----------------------------------------------------------------------------------------------
-
+; ---------------------------------------------------
 ; ENVIO DE NUMPAD REAL PARA NUMPAD VIRTUAL DO POS
-; TENTA ACHAR NO NUMPAD PRINCIPAL, CASO NÃO ACHE, TENTA NO FORMATO DA SEGUNDA ABA DE REGISTO DE CLIENTE.
+; ---------------------------------------------------
+
 NumpadMult::
 *::
 #IfWinActive, POS	; This code is only going to work if POS window is active.
@@ -1187,87 +660,255 @@ return
 
 tab::
 #IfWinActive, POS	; This code is only going to work if POS window is active.
-Text:="|<NUMPADAnula>*121$40.00000002000300Q000A01k000k0DXwMnD0qDtXBw6AtaAkMTn6Mn7XzANXByAClaQqskP6TnTa1YMu9q0000002"
+Padrao:="|<NUMPADAnula>*121$40.00000002000300Q000A01k000k0DXwMnD0qDtXBw6AtaAkMTn6Mn7XzANXByAClaQqskP6TnTa1YMu9q0000002"
+Rocky:="|<AnulaRocky>*124$37.3000603U00301s001U1wDX6lsr7tXNyNXAlg3QlaMq7jwnAPDy6NaBiS3gnynz0q8vNr"
+Contador := 0
 
-if (ok:=FindText(X, Y, 650-150000, 248-150000, 650+150000, 248+150000, 0, 0, Text))
+if (ok:=FindText(X, Y, 650-150000, 248-150000, 650+150000, 248+150000, 0, 0, Padrao))
 {
-   FindText().Click(X, Y, "L")
+  if Contador <> 1
+  {
+    FindText().Click(X, Y, "L")
+    Contador++
+  }
 }
+
+else (ok:=FindText(X, Y, 650-150000, 248-150000, 650+150000, 248+150000, 0, 0, Rocky))
+{
+  if Contador <> 1
+  {
+    FindText().Click(X, Y, "L")
+    Contador++
+  }
+}
+
 return
 
 Numpad0::
 0::
 #IfWinActive, POS	; This code is only going to work if POS window is active.
-Text:="|<Numpad0>*169$12.003k7wCQACQCQCQCQCQCAACQ7s3k00U"
+Padrao := "|<Numpad0>*169$12.003k7wCQACQCQCQCQCQCAACQ7s3k00U"
+Rocky := "|<Numpad0Rocky>*174$12.003kDwCQQCQCQCQCQCQCQACQ7s3k00U"
+BDC := "|<NUMPAD0BDC>*177$21.0000000000000000000M00DU03i00Mk03300MM03300Ms03a00Dk00w0000000000000000004"
+BDCRocky := "|<NUMPAD0BDCRocky>*179$21.000000000001s00TU07A00kk06600kk06600lk07Q00TU00k00000000000000000000000004"
+PERTO := "|<NUMPAD0PERTO>*177$21.0000000000000000000M00DU03i00Mk03300MM03300Ms03a00Dk00w0000000000000000004"
+PERTORocky := "|<NUMPAD0PERTORocky>*174$21.0000000000000000001s00Tk07600kk06700ks06700ks07600Tk01w0000000000000000004"
+Contador := 0
 
-if (ok:=FindText(X, Y, 395-150000, 396-150000, 395+150000, 396+150000, 0, 0, Text))
+if (ok:=FindText(X, Y, 461-150000, 338-150000, 461+150000, 338+150000, 0, 0, Padrao))
 {
-   FindText().Click(X, Y, "L")
-}
-
-else {
-  Text:="|<0BDC>*169$10.00S3wQlXa6MNVaABky00U"
-  if (ok:=FindText(X, Y, 533-150000, 388-150000, 533+150000, 388+150000, 0, 0, Text))
+  if Contador <> 1
   {
     FindText().Click(X, Y, "L")
+    Contador++
+  }
+}
+
+else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, Rocky))
+{
+  if Contador <> 1
+  {
+    FindText().Click(X, Y, "L")
+    Contador++
+  }
+}
+
+else if (ok:=FindText(X, Y, 112-150000, 388-150000, 112+150000, 388+150000, 0, 0, BDCRocky))
+{
+  if Contador <> 1
+  {
+    FindText().Click(X, Y, "L")
+    Contador++
+  }
+}
+
+else if (ok:=FindText(X, Y, 112-150000, 388-150000, 112+150000, 388+150000, 0, 0, PERTO))
+{
+  if Contador <> 1
+  {
+    FindText().Click(X, Y, "L")
+    Contador++
+  }
+}
+
+else if (ok:=FindText(X, Y, 112-150000, 388-150000, 112+150000, 388+150000, 0, 0, PERTORocky))
+{
+  if Contador <> 1
+  {
+    FindText().Click(X, Y, "L")
+    Contador++
   }
 }
 
 return
+
 Numpad1::
 1::
 #IfWinActive, POS	; This code is only going to work if POS window is active.
-Text:="|<Numpad1>*161$11.0030C1w7s4k1U3060A0M0k7sTk04"
+Padrao := "|<Numpad1>*161$11.0030C1w7s4k1U3060A0M0k7sTk04"
+Rocky := "|<Numpad1Rocky>*174$8.73lwzBkQ71kQ71lzTs"
+BDC := "|<NUMPAD1BDC>*172$21.0000000000000000000s00D003s003000M003000M003001y00Dk0000000000000000000004"
+BDCRocky := "|<NUMPAD1BDCRocky>*174$21.0000000000000000000M007001s00/000M003000M003000M00Dk00w0000000000000000004"
+PERTO := "|<NUMPAD1PERTO>*172$19.00000000000000000Q00S00T001U00k00M00A00600Dk07s00000000000000000004"
+PERTORocky := "|<NUMPAD1PERTORocky>*174$21.000000000000k00C003k00K000k006000k006000k00TU01s00000000000000000000000004"
+Contador := 0
 
-if (ok:=FindText(X, Y, 461-150000, 338-150000, 461+150000, 338+150000, 0, 0, Text))
+if (ok:=FindText(X, Y, 461-150000, 338-150000, 461+150000, 338+150000, 0, 0, Padrao))
 {
-   FindText().Click(X, Y, "L")
-}
-else {
-Text:="|<NUMPAD1BDC>*173$9.00MD3s/0M30M30sDlw04"
-
-  if (ok:=FindText(X, Y, 112-150000, 388-150000, 112+150000, 388+150000, 0, 0, Text))
+  if Contador <> 1
   {
     FindText().Click(X, Y, "L")
+    Contador++
+  }
+}
+
+else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, Rocky))
+{
+  if Contador <> 1
+  {
+    FindText().Click(X, Y, "L")
+    Contador++
+  }
+}
+
+else if (ok:=FindText(X, Y, 112-150000, 388-150000, 112+150000, 388+150000, 0, 0, BDCRocky))
+{
+  if Contador <> 1
+  {
+    FindText().Click(X, Y, "L")
+    Contador++
+  }
+}
+
+else if (ok:=FindText(X, Y, 112-150000, 388-150000, 112+150000, 388+150000, 0, 0, PERTO))
+{
+  if Contador <> 1
+  {
+    FindText().Click(X, Y, "L")
+    Contador++
+  }
+}
+
+else if (ok:=FindText(X, Y, 112-150000, 388-150000, 112+150000, 388+150000, 0, 0, PERTORocky))
+{
+  if Contador <> 1
+  {
+    FindText().Click(X, Y, "L")
+    Contador++
   }
 }
 return
+
 Numpad2::
 2::
 #IfWinActive, POS	; This code is only going to work if POS window is active.
-Text:="|<Numpad2>*166$11.007UTVnX70C0Q1k30C0s3UDwzs04"
+Padrao := "|<Numpad2>*166$11.007UTVnX70C0Q1k30C0s3UDwzs04"
+Rocky := "|<Numpad2Rocky>*173$9.7XyRz70s71kQ71kS7zzw"
+BDC := "|<NUMPAD2BDC>*173$21.0000000000000000000U00T007Q00lU00A003000k00A003000zU07w0000000000000000004"
+BDCRocky := "|<NUMPAD2BDCRocky>*182$21.0000000000000000001s00TU03C000k00C003U00M00C003k00Tk03y0000000000000000004"
+PERTO := "|<NUMPAD2PERTO>*173$21.0000000000000004003s00vU06A001U00M006001U00M007w00zU0000000000000000000004"
+PERTORocky := "|<NUMPAD2PERTORocky>*182$21.0000000000000000001s00TU03C000k00C003U00M00C003k00Tk03y0000000000000000004"
+Contador := 0
 
-if (ok:=FindText(X, Y, 546-150000, 338-150000, 546+150000, 338+150000, 0, 0, Text))
+if (ok:=FindText(X, Y, 461-150000, 338-150000, 461+150000, 338+150000, 0, 0, Padrao))
 {
-   FindText().Click(X, Y, "L")
-}
-else {
-Text:="|<NUMPAD2BDC>*175$9.00sDnCMkC1UM61kTly04"
-
-  if (ok:=FindText(X, Y, 159-150000, 388-150000, 159+150000, 388+150000, 0, 0, Text))
+  if Contador <> 1
   {
-     FindText().Click(X, Y, "L")
+    FindText().Click(X, Y, "L")
+    Contador++
   }
 }
 
+else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, Rocky))
+{
+  if Contador <> 1
+  {
+    FindText().Click(X, Y, "L")
+    Contador++
+  }
+}
+
+else if (ok:=FindText(X, Y, 112-150000, 388-150000, 112+150000, 388+150000, 0, 0, BDCRocky))
+{
+  if Contador <> 1
+  {
+    FindText().Click(X, Y, "L")
+    Contador++
+  }
+}
+
+else if (ok:=FindText(X, Y, 112-150000, 388-150000, 112+150000, 388+150000, 0, 0, PERTO))
+{
+  if Contador <> 1
+  {
+    FindText().Click(X, Y, "L")
+    Contador++
+  }
+}
+
+else if (ok:=FindText(X, Y, 112-150000, 388-150000, 112+150000, 388+150000, 0, 0, PERTORocky))
+{
+  if Contador <> 1
+  {
+    FindText().Click(X, Y, "L")
+    Contador++
+  }
+}
 return
 
 Numpad3::
 3::
 #IfWinActive, POS	; This code is only going to work if POS window is active.
-Text:="|<Numpad3>*169$11.007UzVXb70A1s3k3k3W7CCDsDU04"
+Padrao := "|<Numpad3>*169$11.007UzVXb70A1s3k3k3W7CCDsDU04"
+Rocky := "|<Numpad3Rocky>*170$9.7VyQv30sS3k70O3svzDY"
+BDC := "|<NUMPAD3BDC>*177$21.0000000000000003001w00Bk036001k00Q003k00600Mk03y007U0000000000000000000004"
+BDCRocky := "|<NUMPAD3BDCRocky>*182$21.00000000000000000000007U01y00Ak016003k00C000s03700Qk01y0030000000000000004"
+PERTO := "|<NUMPAD3PERTO>*177$21.0000000000000003001w00Bk036001k00Q003k00600Mk03y007U0000000000000000000004"
+PERTORocky := "|<NUMPAD3PERTORocky>*182$21.00000000000000000000007U01y00Ak016003k00C000s03700Qk01y0030000000000000004"
+Contador := 0
 
-if (ok:=FindText(X, Y, 565-150000, 322-150000, 565+150000, 322+150000, 0, 0, Text))
+if (ok:=FindText(X, Y, 461-150000, 338-150000, 461+150000, 338+150000, 0, 0, Padrao))
 {
-   FindText().Click(X, Y, "L")
+  if Contador <> 1
+  {
+    FindText().Click(X, Y, "L")
+    Contador++
+  }
 }
 
-else {
-Text:="|<NUMPAD3BDC>*173$11.007UTVn160s1s0klVr1w0U01"
-
-  if (ok:=FindText(X, Y, 205-150000, 388-150000, 205+150000, 388+150000, 0, 0, Text))
+else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, Rocky))
+{
+  if Contador <> 1
   {
-   FindText().Click(X, Y, "L")
+    FindText().Click(X, Y, "L")
+    Contador++
+  }
+}
+
+else if (ok:=FindText(X, Y, 112-150000, 388-150000, 112+150000, 388+150000, 0, 0, BDCRocky))
+{
+  if Contador <> 1
+  {
+    FindText().Click(X, Y, "L")
+    Contador++
+  }
+}
+
+else if (ok:=FindText(X, Y, 112-150000, 388-150000, 112+150000, 388+150000, 0, 0, PERTO))
+{
+  if Contador <> 1
+  {
+    FindText().Click(X, Y, "L")
+    Contador++
+  }
+}
+
+else if (ok:=FindText(X, Y, 112-150000, 388-150000, 112+150000, 388+150000, 0, 0, PERTORocky))
+{
+  if Contador <> 1
+  {
+    FindText().Click(X, Y, "L")
+    Contador++
   }
 }
 return
@@ -1275,479 +916,1531 @@ return
 Numpad4::
 4::
 #IfWinActive, POS	; This code is only going to work if POS window is active.
-Text:="|<Numpad4>*164$12.000s0s1s3M7MCMAMTyTy0M0M0M0800U"
+Padrao := "|<Numpad4>*164$12.000s0s1s3M7MCMAMTyTy0M0M0M0800U"
+Rocky := "|<Numpad4Rocky>*168$10.1kD0w6kn7Asnzzz0k30A0G"
+BDC := "|<NUMPAD4BDC>*178$21.00000000000000000008003U00w00DU03A00tU07w00zk00Q001U0080000000000000000004"
+BDCRocky := "|<NUMPAD4BDCRocky>*182$21.0000000000000000000M007U01w00DU03A00lU0Dw00zk00A001U0080000000000000000004"
+PERTO := "|<NUMPAD4PERTO>*178$21.0000000000000001000Q007U01w00NU07A00zU07y003U00A00100000000000000000000004"
+PERTORocky := "|<NUMPAD4PERTORocky>*182$21.0000000000000000000M007U01w00DU03A00lU0Dw00zk00A001U0080000000000000000004"
+Contador := 0
 
-if (ok:=FindText(X, Y, 395-150000, 249-150000, 395+150000, 249+150000, 0, 0, Text))
+if (ok:=FindText(X, Y, 461-150000, 338-150000, 461+150000, 338+150000, 0, 0, Padrao))
 {
-   FindText().Click(X, Y, "L")
+  if Contador <> 1
+  {
+    FindText().Click(X, Y, "L")
+    Contador++
+  }
 }
 
-else {
-Text:="|<NUMPAD4BDC>*173$10.0060w3kP3AMlzby0k300U"
-
-if (ok:=FindText(X, Y, 253-150000, 388-150000, 253+150000, 388+150000, 0, 0, Text))
+else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, Rocky))
 {
-   FindText().Click(X, Y, "L")
+  if Contador <> 1
+  {
+    FindText().Click(X, Y, "L")
+    Contador++
+  }
 }
+
+else if (ok:=FindText(X, Y, 112-150000, 388-150000, 112+150000, 388+150000, 0, 0, BDCRocky))
+{
+  if Contador <> 1
+  {
+    FindText().Click(X, Y, "L")
+    Contador++
+  }
+}
+
+else if (ok:=FindText(X, Y, 112-150000, 388-150000, 112+150000, 388+150000, 0, 0, PERTO))
+{
+  if Contador <> 1
+  {
+    FindText().Click(X, Y, "L")
+    Contador++
+  }
+}
+
+else if (ok:=FindText(X, Y, 112-150000, 388-150000, 112+150000, 388+150000, 0, 0, PERTORocky))
+{
+  if Contador <> 1
+  {
+    FindText().Click(X, Y, "L")
+    Contador++
+  }
 }
 return
 
 Numpad5::
 5::
 #IfWinActive, POS	; This code is only going to work if POS window is active.
-Text:="|<Numpad5>*161$10.00z30Q1U7sTk3UC0M3aQTUM00U"
+Padrao := "|<Numpad5>*161$10.00z30Q1U7sTk3UC0M3aQTUM00U"
+Rocky := "|<Numpad5Rocky>*171$9.DnyM30TXy0s70s7znw64"
+BDC := "|<NUMPAD5BDC>*180$21.000000000000000DU01w00Q003000T003w001k00C00FU03w00D00000000000000000000004"
+BDCRocky := "|<NUMPAD5BDCRocky>*179$21.000000000000000TU03s00E007U00z000Q001U00A00nU07s00A00000000000000000000004"
+PERTO := "|<NUMPAD5PERTO>*180$21.000000000000000DU01w00Q003000T003w001k00C00FU03w00D00000000000000000000004"
+PERTORocky := "|<NUMPAD5PERTORocky>*179$21.0000000000000000001y00DU01000S003w001k006000k03C00TU00k0000000000000000004"
+Contador := 0
 
-if (ok:=FindText(X, Y, 481-150000, 249-150000, 481+150000, 249+150000, 0, 0, Text))
+if (ok:=FindText(X, Y, 461-150000, 338-150000, 461+150000, 338+150000, 0, 0, Padrao))
 {
-   FindText().Click(X, Y, "L")
+  if Contador <> 1
+  {
+    FindText().Click(X, Y, "L")
+    Contador++
+  }
 }
 
-else {
-Text:="|<NUMPAD5BDC>*170$9.01wDX0S3w1UC1nQT00U"
-
-if (ok:=FindText(X, Y, 299-150000, 388-150000, 299+150000, 388+150000, 0, 0, Text))
+else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, Rocky))
 {
-   FindText().Click(X, Y, "L")
+  if Contador <> 1
+  {
+    FindText().Click(X, Y, "L")
+    Contador++
+  }
 }
+
+else if (ok:=FindText(X, Y, 112-150000, 388-150000, 112+150000, 388+150000, 0, 0, BDCRocky))
+{
+  if Contador <> 1
+  {
+    FindText().Click(X, Y, "L")
+    Contador++
+  }
+}
+
+else if (ok:=FindText(X, Y, 112-150000, 388-150000, 112+150000, 388+150000, 0, 0, PERTO))
+{
+  if Contador <> 1
+  {
+    FindText().Click(X, Y, "L")
+    Contador++
+  }
+}
+
+else if (ok:=FindText(X, Y, 112-150000, 388-150000, 112+150000, 388+150000, 0, 0, PERTORocky))
+{
+  if Contador <> 1
+  {
+    FindText().Click(X, Y, "L")
+    Contador++
+  }
 }
 return
 
 Numpad6::
 6::
 #IfWinActive, POS	; This code is only going to work if POS window is active.
-Text:="|<Numpad6>*162$11.003U60M1U7sDsstUn1b77QDs2004"
+Padrao := "|<Numpad6>*162$11.003U60M1U7sDsstUn1b77QDs2004"
+Rocky := "|<Numpad6Rocky>*175$10.3kC1kC1z7ysvVy7sNzXw72"
+BDC := "|<NUMPAD6BDC>*175$21.00000000000000000008003000k00A003w00Tk03600sk03C00TU01s0000000000000000004"
+BDCRocky := "|<NUMPAD6BDCRocky>*181$21.0000000000000000000Q007000k00D003w00Nk07600Mk03i00TU00k0000000000000000004"
+PERTO := "|<NUMPAD6PERTO>*175$21.0000000000000000U00A003000k00Dk01z00AM03X00As01y007U0000000000000000000004"
+PERTORocky := "|<NUMPAD6PERTORocky>*181$21.00000000000000000000003U00s006001s00TU03C00sk03600Rk03w0060000000000000004"
+Contador := 0
 
-if (ok:=FindText(X, Y, 565-150000, 249-150000, 565+150000, 249+150000, 0, 0, Text))
+if (ok:=FindText(X, Y, 461-150000, 338-150000, 461+150000, 338+150000, 0, 0, Padrao))
 {
-   FindText().Click(X, Y, "L")
+  if Contador <> 1
+  {
+    FindText().Click(X, Y, "L")
+    Contador++
+  }
 }
 
-else {
-Text:="|<NUMPAD6BDC>*171$11.003UC0M1k7sCsMklVr1w0001"
-
-if (ok:=FindText(X, Y, 346-150000, 388-150000, 346+150000, 388+150000, 0, 0, Text))
+else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, Rocky))
 {
-   FindText().Click(X, Y, "L")
+  if Contador <> 1
+  {
+    FindText().Click(X, Y, "L")
+    Contador++
+  }
 }
+
+else if (ok:=FindText(X, Y, 112-150000, 388-150000, 112+150000, 388+150000, 0, 0, BDCRocky))
+{
+  if Contador <> 1
+  {
+    FindText().Click(X, Y, "L")
+    Contador++
+  }
+}
+
+else if (ok:=FindText(X, Y, 112-150000, 388-150000, 112+150000, 388+150000, 0, 0, PERTO))
+{
+  if Contador <> 1
+  {
+    FindText().Click(X, Y, "L")
+    Contador++
+  }
+}
+
+else if (ok:=FindText(X, Y, 112-150000, 388-150000, 112+150000, 388+150000, 0, 0, PERTORocky))
+{
+  if Contador <> 1
+  {
+    FindText().Click(X, Y, "L")
+    Contador++
+  }
 }
 return
 
 Numpad7::
 7::
 #IfWinActive, POS	; This code is only going to work if POS window is active.
-Text:="|<Numpad7>*165$11.00ztzk30C0M1k30C0M1k30C0M004"
+Padrao := "|<Numpad7>*165$11.00ztzk30C0M1k30C0M1k30C0M004"
+Rocky := "|<Numpad7Rocky>*168$10.zxzk60s30Q1UC0k70M3UA2"
+BDC := "|<NUMPAD7BDC>*180$21.000000000000000zU07w003U00M003000k006001U00A003U00M00000000000000000000004"
+BDCRocky := "|<NUMPAD7BDCRocky>*176$21.0000000000000000001zU0Dw003000M006000k00A003U00M00700000000000000000000004"
+PERTO := "|<NUMPAD7PERTO>*180$21.0000000000000000003y00Tk00C001U00A003000M006000k00C001U0000000000000000004"
+PERTORocky := "|<NUMPAD7PERTORocky>*176$21.0000000000000000007y00zk00A001U00M003000k00C001U00Q00000000000000000000004"
+Contador := 0
 
-if (ok:=FindText(X, Y, 395-150000, 175-150000, 395+150000, 175+150000, 0, 0, Text))
+if (ok:=FindText(X, Y, 461-150000, 338-150000, 461+150000, 338+150000, 0, 0, Padrao))
 {
-   FindText().Click(X, Y, "L")
+  if Contador <> 1
+  {
+    FindText().Click(X, Y, "L")
+    Contador++
+  }
 }
 
-else {
-Text:="|<NUMPAD7BDC>*168$9.03yTk61UA30M60kA00U"
-
-if (ok:=FindText(X, Y, 392-150000, 388-150000, 392+150000, 388+150000, 0, 0, Text))
+else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, Rocky))
 {
-   FindText().Click(X, Y, "L")
+  if Contador <> 1
+  {
+    FindText().Click(X, Y, "L")
+    Contador++
+  }
 }
+
+else if (ok:=FindText(X, Y, 112-150000, 388-150000, 112+150000, 388+150000, 0, 0, BDCRocky))
+{
+  if Contador <> 1
+  {
+    FindText().Click(X, Y, "L")
+    Contador++
+  }
+}
+
+else if (ok:=FindText(X, Y, 112-150000, 388-150000, 112+150000, 388+150000, 0, 0, PERTO))
+{
+  if Contador <> 1
+  {
+    FindText().Click(X, Y, "L")
+    Contador++
+  }
+}
+
+else if (ok:=FindText(X, Y, 112-150000, 388-150000, 112+150000, 388+150000, 0, 0, PERTORocky))
+{
+  if Contador <> 1
+  {
+    FindText().Click(X, Y, "L")
+    Contador++
+  }
 }
 return
 
 Numpad8::
 8::
 #IfWinActive, POS	; This code is only going to work if POS window is active.
-Text:="|<Numpad8>*162$11.00DUzVXX76C7sTllnVb3CCDs7U04"
+Padrao := "|<Numpad8>*162$11.00DUzVXX76C7sTllnVb3CCDs7U04"
+Rocky := "|<Numpad8Rocky>*170$9.DXysz7MvyTr7sT3svyDY"
+BDC := "|<NUMPAD8BDC>*170$21.0000000000000000000E00DU03i00Mk01y00DU03600Mk03600Tk00s0000000000000000004"
+BDCRocky := "|<NUMPAD8BDCRocky>*176$21.0000000000000000000s00Tk03600Rk01w00Rk03600Mk03i00Dk00E0000000000000000004"
+PERTO := "|<NUMPAD8PERTO>*170$21.0000000000000001000y00Cs01X007s00y00AM01X00AM01z003U0000000000000000000004"
+PERTORocky := "|<NUMPAD8PERTORocky>*176$21.0000000000000000000s00Tk03600Rk01w00Rk03600Mk03i00Dk00E0000000000000000004"
+Contador := 0
 
-if (ok:=FindText(X, Y, 480-150000, 175-150000, 480+150000, 175+150000, 0, 0, Text))
+if (ok:=FindText(X, Y, 461-150000, 338-150000, 461+150000, 338+150000, 0, 0, Padrao))
 {
-   FindText().Click(X, Y, "L")
+  if Contador <> 1
+  {
+    FindText().Click(X, Y, "L")
+    Contador++
+  }
 }
 
-else {
-Text:="|<NUMPAD8BDC>*165$9.00sTX6TlwRX6MniDU0U"
-
-if (ok:=FindText(X, Y, 439-150000, 388-150000, 439+150000, 388+150000, 0, 0, Text))
+else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, Rocky))
 {
-   FindText().Click(X, Y, "L")
+  if Contador <> 1
+  {
+    FindText().Click(X, Y, "L")
+    Contador++
+  }
 }
+
+else if (ok:=FindText(X, Y, 112-150000, 388-150000, 112+150000, 388+150000, 0, 0, BDCRocky))
+{
+  if Contador <> 1
+  {
+    FindText().Click(X, Y, "L")
+    Contador++
+  }
+}
+
+else if (ok:=FindText(X, Y, 112-150000, 388-150000, 112+150000, 388+150000, 0, 0, PERTO))
+{
+  if Contador <> 1
+  {
+    FindText().Click(X, Y, "L")
+    Contador++
+  }
+}
+
+else if (ok:=FindText(X, Y, 112-150000, 388-150000, 112+150000, 388+150000, 0, 0, PERTORocky))
+{
+  if Contador <> 1
+  {
+    FindText().Click(X, Y, "L")
+    Contador++
+  }
 }
 return
 
 Numpad9::
 9::
 #IfWinActive, POS	; This code is only going to work if POS window is active.
-Text:="|<Numpad9>*164$11.00DUzXXa7CCQQTkTU60M1k70A004"
+Padrao := "|<Numpad9>*164$11.00DUzXXa7CCQQTkTU60M1k70A004"
+Rocky := "|<Numpad9Rocky>*170$9.DXyMz3sTbTty1kQ71kA4"
+BDC := "|<NUMPAD9BDC>*178$21.0000000000000001U00y00Cs01X00Cs00z003s00C001U00Q00700000000000000000000004"
+BDCRocky := "|<NUMPAD9BDCRocky>*178$21.00000000000000000000007U01y00QM03X00Ds01y001k00A003000s0040000000000000004"
+PERTO := "|<NUMPAD9PERTO>*178$21.0000000000000006003s00vU06A00vU03w00DU00s006001k00Q00000000000000000000004"
+PERTORocky := "|<NUMPAD9PERTORocky>*178$21.0000000000000007U01y00QM03X00Ds01y001k00A003000s00400000000000000000000004"
+Contador := 0
 
-if (ok:=FindText(X, Y, 565-150000, 175-150000, 565+150000, 175+150000, 0, 0, Text))
+if (ok:=FindText(X, Y, 461-150000, 338-150000, 461+150000, 338+150000, 0, 0, Padrao))
 {
-   FindText().Click(X, Y, "L")
+  if Contador <> 1
+  {
+    FindText().Click(X, Y, "L")
+    Contador++
+  }
 }
 
-else {
-Text:="|<NUMPAD9BDC>*167$9.00sDn6MnyDkA3Us600U"
-
-if (ok:=FindText(X, Y, 485-150000, 388-150000, 485+150000, 388+150000, 0, 0, Text))
+else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, Rocky))
 {
-   FindText().Click(X, Y, "L")
+  if Contador <> 1
+  {
+    FindText().Click(X, Y, "L")
+    Contador++
+  }
 }
+
+else if (ok:=FindText(X, Y, 112-150000, 388-150000, 112+150000, 388+150000, 0, 0, BDCRocky))
+{
+  if Contador <> 1
+  {
+    FindText().Click(X, Y, "L")
+    Contador++
+  }
+}
+
+else if (ok:=FindText(X, Y, 112-150000, 388-150000, 112+150000, 388+150000, 0, 0, PERTO))
+{
+  if Contador <> 1
+  {
+    FindText().Click(X, Y, "L")
+    Contador++
+  }
+}
+
+else if (ok:=FindText(X, Y, 112-150000, 388-150000, 112+150000, 388+150000, 0, 0, PERTORocky))
+{
+  if Contador <> 1
+  {
+    FindText().Click(X, Y, "L")
+    Contador++
+  }
 }
 return
 
 NumpadEnter::
 enter::
 #IfWinActive, POS	; This code is only going to work if POS window is active.
-Text:="|<Entra>*120$36.000000Ds0800Ds0A00A1MSoMA3yyzyDnaQsaDn6Qk6A36QkyA36QlyDv6ClyDv6Cly000000U"
+Padrao := "|<Entra>*120$36.000000Ds0800Ds0A00A1MSoMA3yyzyDnaQsaDn6Qk6A36QkyA36QlyDv6ClyDv6Cly000000U"
+Rocky := "|<EntraRocky>*124$34.zU0U03w0600A1MyYQkDvvzvwtaC1jn6Mk6kANX3z0laANzv6QlbzgMv7y"
+BDC := "|<ENTRABDC>*144$36.zzzzzzUDzzzzUDzbzzXzzbzzXw3023UQ3263UQnaDnXwlaT1XwlaQ1XwlaQFUAlUQ1kBvrTTzzzzzzU"
+Contador := 0
 
-if (ok:=FindText(X, Y, 650-150000, 175-150000, 650+150000, 175+150000, 0, 0, Text))
+if (ok:=FindText(X, Y, 461-150000, 338-150000, 461+150000, 338+150000, 0, 0, Padrao))
 {
-   FindText().Click(X, Y, "L")
+  if Contador <> 1
+  {
+    FindText().Click(X, Y, "L")
+    Contador++
+  }
 }
 
-else {
-Text:="|<ENTRABDC>*144$36.zzzzzzUDzzzzUDzbzzXzzbzzXw3023UQ3263UQnaDnXwlaT1XwlaQ1XwlaQFUAlUQ1kBvrTTzzzzzzU"
-
-if (ok:=FindText(X, Y, 506-150000, 585-150000, 506+150000, 585+150000, 0, 0, Text))
+else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, Rocky))
 {
-   FindText().Click(X, Y, "L")
+  if Contador <> 1
+  {
+    FindText().Click(X, Y, "L")
+    Contador++
+  }
 }
+
+else (ok:=FindText(X, Y, 112-150000, 388-150000, 112+150000, 388+150000, 0, 0, BDC))
+{
+  if Contador <> 1
+  {
+    FindText().Click(X, Y, "L")
+    Contador++
+  }
 }
 return
 
 BackSpace::
- KeyWait,BackSpace,T0.8 ;wait 0.8 seconds for release key
- If (ErrorLevel) ;more than 0.8 sec have passed
- {
-    Text:="|<NUMPADAnula>*126$38.10003U0s000s0S000C07lyAPbVgTnCvwnbAni3DtXAvXryMnCvxVqAnjrMBXDvjw3MlqHi"
-    if (ok:=FindText(X, Y, 650-150000, 248-150000, 650+150000, 248+150000, 0, 0, Text))
-    {
-     FindText().Click(X, Y, "L")
-    }
- }
+Padrao:="|<NUMPADLimpa>*123$40.00000000M000031U0000Q000001k0000071jzDlwQ6zyzbtkPaPa1b1gNgMyQ6lalbtkP6PivbxgNjlyDUF0u200003000000A000000002"
+PadraoES:="|<NUMPADLimpiar>*124$47.0A000A01UM000M03U00000070000000C3TyTXD7w6zyzazDsBbBXA6NkPAP6NwnUqMqArtb1glitxnDvNXTXTaDYF4q4E80001U00000030002"
+Rocky:="|<LimpaRocky>*126$38.0M0000A7000030U0000k00000A6TyTnv1bRrwrkNaBnUw6NXQtz1aMrCzkNaBnRzqNXTnzwU8bEM0001k00000Q02"
+BDC:="|<BACKSPACEBDC>*146$21.zDzzlzzwTzz7zzlzzw0000004000Vzzy7zzsTzzlzzyDzw"
+Contador := 0
 
-    Text:="|<NUMPADLimpa>*123$40.00000000M000031U0000Q000001k0000071jzDlwQ6zyzbtkPaPa1b1gNgMyQ6lalbtkP6PivbxgNjlyDUF0u200003000000A000000002"
-    
-    if (ok:=FindText(X, Y, 643-150000, 419-150000, 643+150000, 419+150000, 0, 0, Text))
-    {
-    FindText().Click(X, Y, "L")
-    }
-
-    Text:="|<NUMPADLimpiar>*124$47.0A000A01UM000M03U00000070000000C3TyTXD7w6zyzazDsBbBXA6NkPAP6NwnUqMqArtb1glitxnDvNXTXTaDYF4q4E80001U00000030002"
-
-    if (ok:=FindText(X, Y, 2289-150000, 177-150000, 2289+150000, 177+150000, 0, 0, Text))
-    {
-     FindText().Click(X, Y, "L")
-    }
-
-    Text:="|<BACKSPACEBDC>*146$21.zDzzlzzwTzz7zzlzzw0000004000Vzzy7zzsTzzlzzyDzw"
-
-    if (ok:=FindText(X, Y, 579-150000, 413-150000, 579+150000, 413+150000, 0, 0, Text))
-    {
-    FindText().Click(X, Y, "L")
-    }
-return
-
-
-
-
-/* backspace total bdc
-^BackSpace::
-Text:="|<LIMPABDC>*148$39.zzzzzzzzDzzzzbvzzzzwzzzzzzbv9b9wQz80M71btAHATAz9b9ntbtAtCMAz9b9W1UNAt0kA3Nb8D5zzzzDzzzzztzzzzzzTzzzzzzzzU"
-
-if (ok:=FindText(X, Y, 581-150000, 506-150000, 581+150000, 506+150000, 0, 0, Text))
+if (ok:=FindText(X, Y, 643-150000, 419-150000, 643+150000, 419+150000, 0, 0, Padrao))
 {
-   FindText().Click(X, Y, "L")
+  if Contador <> 1
+  {
+    FindText().Click(X, Y, "L")
+    Contador++
+  }
+}
+
+else if (ok:=FindText(X, Y, 2289-150000, 177-150000, 2289+150000, 177+150000, 0, 0, PadraoES))
+{
+  if Contador <> 1
+  {
+    FindText().Click(X, Y, "L")
+    Contador++
+  }
+}
+
+else if (ok:=FindText(X, Y, 2289-150000, 177-150000, 2289+150000, 177+150000, 0, 0, Rocky))
+{
+  if Contador <> 1
+  {
+    FindText().Click(X, Y, "L")
+    Contador++
+  }
+}
+else if (ok:=FindText(X, Y, 2289-150000, 177-150000, 2289+150000, 177+150000, 0, 0, BDC))
+{
+  if Contador <> 1
+  {
+    FindText().Click(X, Y, "L")
+    Contador++
+  }
 }
 return
-*/
+
 ; TECLAS EXCLUSIVAS REGISTO DE CLIENTE
-Text:="|<BDC>*149$128.00C000001k0Q000000000D03U00000Q7z0000000003k0s0000A73xk000000000w0C0000300w0000000000D03U0001k0C00000000003kSsDUnkzbDtkT0w0w3s3swDy7wDyTtnzQDszkzXz3zD7zXzXzXyQTb7yDwTwzkzvlktssswQ73Vlk17b04CSDwsCTzC771ksQs00vk03b1zC3bznVlkQC7C01ys07tkTnUtk0sQQ73VnU3zi07yQ7wsCQ0C771ksQs1svk3Xb1zD3bU3VlkQC7D0QCQ1ktkzlzszssQTb3Vlzr7bzQSTywTy7yC73tksQDtzsznzXzj3vUz3VkyQC71wDi7kysTW"
 
-if (ok:=FindText(X, Y, 1961-150000, 73-150000, 1961+150000, 73+150000, 0, 0, Text))
+BDCPadrao:="|<BDC>*149$128.00C000001k0Q000000000D03U00000Q7z0000000003k0s0000A73xk000000000w0C0000300w0000000000D03U0001k0C00000000003kSsDUnkzbDtkT0w0w3s3swDy7wDyTtnzQDszkzXz3zD7zXzXzXyQTb7yDwTwzkzvlktssswQ73Vlk17b04CSDwsCTzC771ksQs00vk03b1zC3bznVlkQC7C01ys07tkTnUtk0sQQ73VnU3zi07yQ7wsCQ0C771ksQs1svk3Xb1zD3bU3VlkQC7D0QCQ1ktkzlzszssQTb3Vlzr7bzQSTywTy7yC73tksQDtzsznzXzj3vUz3VkyQC71wDi7kysTW"
+BDCRocky:="|<BDCRocky>*147$156.00Q0000000T000000000000C00s0Q000003Vy000000000000C00s0Q000043Vk000000000000C00s0Q0000C3XU000000000000C00s0Q0000C03U000000000000C00s7Q7kNsC0DzkT0w1w3k3k03i3ssTwDsTwzzjzkzXy3yDsDw0Dy7ysywSQTwzzXVlzbz7iDwSy0TyDSssQMAQCC3XVlk07700QQC0QCS7ssQzyQCC3XVnU07C00QsC0QCQ7tsQzyQCC3XVnU0zC03ws70sCQ7tsQs0QCC3XVnU3zC0Dws70sCQ7ssQs0QCC3XVnU7bC0SQsC0MCQ7ssQQ0QCC3XVnk77D0QQQC0QCQ7swwSQQCC3XVltb77aQQSS0SSCDsTwDwQCDnXVkzbz3yTwDw0Dy7ysDA7sQC7XXVkT3v1wDg7s07i3wU"
+PERTOPadrao:="|<PERTOPadrao>*146$191.000000k0000030000000000000000001zs0003U0000070003k00000000000003zw0007000000C000DU06000000000007zw000C000000Q000T00A00000000000D0w000Q000000s001k00s00000000000S0s70Cs7U7U0tkS07wC3yQCAkQ0w1s1sw1kzUzkTkzU3zVz0DtzDwsQTny3yDsDxs1nz3zVzlz0Dz7z0TrzDtkszDyDwTszzk3W7D77XXU0wSSC0Q4CC3Vls8Qw0llkzU70CQCC3b01kQzw0s0QQ73XU0tk01b1z0C1wsQQ7DU3Utzs1k3ssC7707nU0TC3y0wTtkskC7k71nU03UzlkQCC1zb07yQ3w1ltnVlkQ3kC3b0073nXUsQQ7bC0SAsDs7b3b3XVs3UQ7C00C6771kssACQ0sNsTkyC7DD7bXD0SyDC0QQCD3rlkMQStlltzzsDyDy7z7w0zwTw0sTwTbzXUzsznzVzjz0TwDA7sDk0ysTk1kzsT7r70ykz3v1yE"
+PERTORocky:="|<PERTORocky>*146$190.000003U0000070000000000000000003zk000C000000Q000DU0000000000000DzU000s000001k001w00s00000000000sT0003U0000070007003U00000000003US000C000000Q000Q00C00000000000C0wDUCs7U7U0xkT07wD3zQCAsy0w3s3ss1nz3zVzVz07z3y0TnzDxkszjwDwTkznU7DyDSDzDA0zwSw0QDwS73XyzsxnzXri0Q0tkssQs03VnUk1k0ssQCD03b00CQ7s1k3b3X1vk0C7Dz0703XVkss0CQ00tkTU71yQCQ3bs1kQzw0Q1yC73XU7tk0Tb1y0QTtktkCDk71nU01kzssQCC1zb07yQ7s3nXb3b0s70S7C0077XXVkssCCQ0stkTUSQCQCC70C0sQw00QQCC73XVktk73b1z7lkttswwFk3nltk1llssSSC77bXQCSCzy3zXzVzXz07z3z077zXwzssDyDwzszvzk7a7a3w7s0DA7s0QDi7VxXUSMTVtUy8"
+
+if (ok:=FindText(X, Y, 1961-150000, 73-150000, 1961+150000, 73+150000, 0, 0, BDCPadrao) or (ok:=FindText(X, Y, 1961-150000, 73-150000, 1961+150000, 73+150000, 0, 0, PERTOPadrao)) or (ok:=FindText(X, Y, 1961-150000, 73-150000, 1961+150000, 73+150000, 0, 0, BDCRocky)) or (ok:=FindText(X, Y, 1961-150000, 73-150000, 1961+150000, 73+150000, 0, 0, PERTORocky)))
 {
- 
-space::
-#IfWinActive, POS	; This code is only going to work if POS window is active.
-Text:="|<ESPACOBDC>*166$57.0000000003wTDkC0y7kTbtz1kTtzX0kAMS30QCM61X3Mk30nsyAMn60s6T1tz6Ak70n03jUza0M6M0RUDws3VnwzA1UnzDwTblUM6Dkz0000000000U"
+  space::
+  #IfWinActive, POS	; This code is only going to work if POS window is active.
+  BDC:=
+  BDCRocky:=
+  PERTO:=
+  PERTORocky:=
+  Contador := 0
 
-if (ok:=FindText(X, Y, 486-150000, 527-150000, 486+150000, 527+150000, 0, 0, Text))
-{
-   FindText().Click(X, Y, "L")
+  if (ok:=FindText(X, Y, 461-150000, 338-150000, 461+150000, 338+150000, 0, 0, BDC))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+  else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, BDCRocky))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+    else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, PERTO))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+    else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, PERTORocky))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+  return
+  q::
+  #IfWinActive, POS	; This code is only going to work if POS window is active.
+  BDC:=
+  BDCRocky:=
+  PERTO:=
+  PERTORocky:=
+  Contador := 0
+
+  if (ok:=FindText(X, Y, 461-150000, 338-150000, 461+150000, 338+150000, 0, 0, BDC))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+  else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, BDCRocky))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+    else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, PERTO))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+    else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, PERTORocky))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+  return
+
+  e::
+  #IfWinActive, POS	; This code is only going to work if POS window is active.
+  BDC:=
+  BDCRocky:=
+  PERTO:=
+  PERTORocky:=
+  Contador := 0
+
+  if (ok:=FindText(X, Y, 461-150000, 338-150000, 461+150000, 338+150000, 0, 0, BDC))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+  else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, BDCRocky))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+    else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, PERTO))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+    else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, PERTORocky))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+  return
+
+  r::
+  #IfWinActive, POS	; This code is only going to work if POS window is active.
+  BDC:=
+  BDCRocky:=
+  PERTO:=
+  PERTORocky:=
+  Contador := 0
+
+  if (ok:=FindText(X, Y, 461-150000, 338-150000, 461+150000, 338+150000, 0, 0, BDC))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+  else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, BDCRocky))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+    else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, PERTO))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+    else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, PERTORocky))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+  return
+
+  t::
+  #IfWinActive, POS	; This code is only going to work if POS window is active.
+  BDC:=
+  BDCRocky:=
+  PERTO:=
+  PERTORocky:=
+  Contador := 0
+
+  if (ok:=FindText(X, Y, 461-150000, 338-150000, 461+150000, 338+150000, 0, 0, BDC))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+  else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, BDCRocky))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+    else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, PERTO))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+    else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, PERTORocky))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+  return
+
+  y::
+  #IfWinActive, POS	; This code is only going to work if POS window is active.
+  BDC:=
+  BDCRocky:=
+  PERTO:=
+  PERTORocky:=
+  Contador := 0
+
+  if (ok:=FindText(X, Y, 461-150000, 338-150000, 461+150000, 338+150000, 0, 0, BDC))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+  else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, BDCRocky))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+    else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, PERTO))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+    else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, PERTORocky))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+  return
+
+  u::
+  #IfWinActive, POS	; This code is only going to work if POS window is active.
+  BDC:=
+  BDCRocky:=
+  PERTO:=
+  PERTORocky:=
+  Contador := 0
+
+  if (ok:=FindText(X, Y, 461-150000, 338-150000, 461+150000, 338+150000, 0, 0, BDC))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+  else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, BDCRocky))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+    else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, PERTO))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+    else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, PERTORocky))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+  return
+
+  i::
+  #IfWinActive, POS	; This code is only going to work if POS window is active.
+  BDC:=
+  BDCRocky:=
+  PERTO:=
+  PERTORocky:=
+  Contador := 0
+
+  if (ok:=FindText(X, Y, 461-150000, 338-150000, 461+150000, 338+150000, 0, 0, BDC))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+  else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, BDCRocky))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+    else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, PERTO))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+    else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, PERTORocky))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+  return
+
+  o::
+  #IfWinActive, POS	; This code is only going to work if POS window is active.
+  BDC:=
+  BDCRocky:=
+  PERTO:=
+  PERTORocky:=
+  Contador := 0
+
+  if (ok:=FindText(X, Y, 461-150000, 338-150000, 461+150000, 338+150000, 0, 0, BDC))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+  else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, BDCRocky))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+    else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, PERTO))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+    else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, PERTORocky))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+  return
+
+  p::
+  #IfWinActive, POS	; This code is only going to work if POS window is active.
+  BDC:=
+  BDCRocky:=
+  PERTO:=
+  PERTORocky:=
+  Contador := 0
+
+  if (ok:=FindText(X, Y, 461-150000, 338-150000, 461+150000, 338+150000, 0, 0, BDC))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+  else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, BDCRocky))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+    else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, PERTO))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+    else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, PERTORocky))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+  return
+
+  ; ----------- PRÓXIMA FILEIRA ----------
+
+  a::
+  #IfWinActive, POS	; This code is only going to work if POS window is active.
+  BDC:=
+  BDCRocky:=
+  PERTO:=
+  PERTORocky:=
+  Contador := 0
+
+  if (ok:=FindText(X, Y, 461-150000, 338-150000, 461+150000, 338+150000, 0, 0, BDC))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+  else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, BDCRocky))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+    else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, PERTO))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+    else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, PERTORocky))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+  return
+
+  s::
+  #IfWinActive, POS	; This code is only going to work if POS window is active.
+  BDC:=
+  BDCRocky:=
+  PERTO:=
+  PERTORocky:=
+  Contador := 0
+
+  if (ok:=FindText(X, Y, 461-150000, 338-150000, 461+150000, 338+150000, 0, 0, BDC))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+  else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, BDCRocky))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+    else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, PERTO))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+    else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, PERTORocky))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+  return
+
+  d::
+  #IfWinActive, POS	; This code is only going to work if POS window is active.
+  BDC:=
+  BDCRocky:=
+  PERTO:=
+  PERTORocky:=
+  Contador := 0
+
+  if (ok:=FindText(X, Y, 461-150000, 338-150000, 461+150000, 338+150000, 0, 0, BDC))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+  else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, BDCRocky))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+    else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, PERTO))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+    else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, PERTORocky))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+  return
+
+  f::
+  #IfWinActive, POS	; This code is only going to work if POS window is active.
+  BDC:=
+  BDCRocky:=
+  PERTO:=
+  PERTORocky:=
+  Contador := 0
+
+  if (ok:=FindText(X, Y, 461-150000, 338-150000, 461+150000, 338+150000, 0, 0, BDC))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+  else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, BDCRocky))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+    else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, PERTO))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+    else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, PERTORocky))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+  return
+
+  g::
+  #IfWinActive, POS	; This code is only going to work if POS window is active.
+  BDC:=
+  BDCRocky:=
+  PERTO:=
+  PERTORocky:=
+  Contador := 0
+
+  if (ok:=FindText(X, Y, 461-150000, 338-150000, 461+150000, 338+150000, 0, 0, BDC))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+  else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, BDCRocky))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+    else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, PERTO))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+    else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, PERTORocky))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+  return
+
+  h::
+  #IfWinActive, POS	; This code is only going to work if POS window is active.
+  BDC:=
+  BDCRocky:=
+  PERTO:=
+  PERTORocky:=
+  Contador := 0
+
+  if (ok:=FindText(X, Y, 461-150000, 338-150000, 461+150000, 338+150000, 0, 0, BDC))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+  else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, BDCRocky))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+    else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, PERTO))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+    else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, PERTORocky))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+  return
+
+  j::
+  #IfWinActive, POS	; This code is only going to work if POS window is active.
+  BDC:=
+  BDCRocky:=
+  PERTO:=
+  PERTORocky:=
+  Contador := 0
+
+  if (ok:=FindText(X, Y, 461-150000, 338-150000, 461+150000, 338+150000, 0, 0, BDC))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+  else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, BDCRocky))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+    else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, PERTO))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+    else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, PERTORocky))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+  return
+
+  k::
+  #IfWinActive, POS	; This code is only going to work if POS window is active.
+  BDC:=
+  BDCRocky:=
+  PERTO:=
+  PERTORocky:=
+  Contador := 0
+
+  if (ok:=FindText(X, Y, 461-150000, 338-150000, 461+150000, 338+150000, 0, 0, BDC))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+  else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, BDCRocky))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+    else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, PERTO))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+    else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, PERTORocky))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+  return
+
+  l::
+  #IfWinActive, POS	; This code is only going to work if POS window is active.
+  BDC:=
+  BDCRocky:=
+  PERTO:=
+  PERTORocky:=
+  Contador := 0
+
+  if (ok:=FindText(X, Y, 461-150000, 338-150000, 461+150000, 338+150000, 0, 0, BDC))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+  else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, BDCRocky))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+    else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, PERTO))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+    else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, PERTORocky))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+  return
+
+  ; ----------- PRÓXIMA FILEIRA ----------
+
+  z::
+  #IfWinActive, POS	; This code is only going to work if POS window is active.
+  BDC:=
+  BDCRocky:=
+  PERTO:=
+  PERTORocky:=
+  Contador := 0
+
+  if (ok:=FindText(X, Y, 461-150000, 338-150000, 461+150000, 338+150000, 0, 0, BDC))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+  else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, BDCRocky))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+    else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, PERTO))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+    else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, PERTORocky))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+  return
+
+  x::
+  #IfWinActive, POS	; This code is only going to work if POS window is active.
+  BDC:=
+  BDCRocky:=
+  PERTO:=
+  PERTORocky:=
+  Contador := 0
+
+  if (ok:=FindText(X, Y, 461-150000, 338-150000, 461+150000, 338+150000, 0, 0, BDC))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+  else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, BDCRocky))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+    else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, PERTO))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+    else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, PERTORocky))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+  return
+
+  c::
+  #IfWinActive, POS	; This code is only going to work if POS window is active.
+  BDC:=
+  BDCRocky:=
+  PERTO:=
+  PERTORocky:=
+  Contador := 0
+
+  if (ok:=FindText(X, Y, 461-150000, 338-150000, 461+150000, 338+150000, 0, 0, BDC))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+  else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, BDCRocky))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+    else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, PERTO))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+    else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, PERTORocky))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+  return
+
+  v::
+  #IfWinActive, POS	; This code is only going to work if POS window is active.
+  BDC:=
+  BDCRocky:=
+  PERTO:=
+  PERTORocky:=
+  Contador := 0
+
+  if (ok:=FindText(X, Y, 461-150000, 338-150000, 461+150000, 338+150000, 0, 0, BDC))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+  else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, BDCRocky))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+    else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, PERTO))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+    else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, PERTORocky))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+  return
+
+  b::
+  #IfWinActive, POS	; This code is only going to work if POS window is active.
+  BDC:=
+  BDCRocky:=
+  PERTO:=
+  PERTORocky:=
+  Contador := 0
+
+  if (ok:=FindText(X, Y, 461-150000, 338-150000, 461+150000, 338+150000, 0, 0, BDC))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+  else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, BDCRocky))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+    else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, PERTO))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+    else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, PERTORocky))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+  return
+
+  n::
+  #IfWinActive, POS	; This code is only going to work if POS window is active.
+  BDC:=
+  BDCRocky:=
+  PERTO:=
+  PERTORocky:=
+  Contador := 0
+
+  if (ok:=FindText(X, Y, 461-150000, 338-150000, 461+150000, 338+150000, 0, 0, BDC))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+  else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, BDCRocky))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+    else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, PERTO))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+    else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, PERTORocky))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+  return
+
+  m::
+  #IfWinActive, POS	; This code is only going to work if POS window is active.
+  BDC:=
+  BDCRocky:=
+  PERTO:=
+  PERTORocky:=
+  Contador := 0
+
+  if (ok:=FindText(X, Y, 461-150000, 338-150000, 461+150000, 338+150000, 0, 0, BDC))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+  else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, BDCRocky))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+    else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, PERTO))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+    else if (ok:=FindText(X, Y, 393-150000, 279-150000, 393+150000, 279+150000, 0, 0, PERTORocky))
+  {
+    if Contador <> 1
+    {
+      FindText().Click(X, Y, "L")
+      Contador++
+    }
+  }
+  return
 }
-return
 
-q::
-#IfWinActive, POS	; This code is only going to work if POS window is active.
-Text:="|<QBDC>*170$13.000s1z1llkMkCM3A3b1VlkTk7s0601U04"
-
-if (ok:=FindText(X, Y, 112-150000, 435-150000, 112+150000, 435+150000, 0, 0, Text))
-{
-   FindText().Click(X, Y, "L")
-}
-return
-
-w::
-#IfWinActive, POS	; This code is only going to work if POS window is active.
-Text:="|<WBDC>*174$17.000kENlklXXX7a6TACqsBjUSD0wS0ss1Uk001"
-
-if (ok:=FindText(X, Y, 159-150000, 434-150000, 159+150000, 434+150000, 0, 0, Text))
-{
-   FindText().Click(X, Y, "L")
-}
-return
-
-e::
-#IfWinActive, POS	; This code is only going to work if POS window is active.
-Text:="|<EBDC>*159$8.07tyM61UT61UM7ty08"
-
-if (ok:=FindText(X, Y, 206-150000, 434-150000, 206+150000, 434+150000, 0, 0, Text))
-{
-   FindText().Click(X, Y, "L")
-}
-return
-
-r::
-#IfWinActive, POS	; This code is only going to work if POS window is active.
-Text:="|<RBDC>*169$10.01w7wNlX6QTVy6MNlXa602"
-
-if (ok:=FindText(X, Y, 253-150000, 434-150000, 253+150000, 434+150000, 0, 0, Text))
-{
-   FindText().Click(X, Y, "L")
-}
-return
-
-t::
-#IfWinActive, POS	; This code is only going to work if POS window is active.
-Text:="|<TBDC>*170$8.zzwM61UM61UM61W"
-
-if (ok:=FindText(X, Y, 299-150000, 434-150000, 299+150000, 434+150000, 0, 0, Text))
-{
-   FindText().Click(X, Y, "L")
-}
-return
-
-y::
-#IfWinActive, POS	; This code is only going to work if POS window is active.
-Text:="|<YBDC>*181$9.kT3QtaDUw70M30M34"
-
-if (ok:=FindText(X, Y, 345-150000, 434-150000, 345+150000, 434+150000, 0, 0, Text))
-{
-   FindText().Click(X, Y, "L")
-}
-return
-
-u::
-#IfWinActive, POS	; This code is only going to work if POS window is active.
-Text:="|<UBDC>*178$9.ET3sT3sT3sT3Qty7Y"
-
-if (ok:=FindText(X, Y, 391-150000, 434-150000, 391+150000, 434+150000, 0, 0, Text))
-{
-   FindText().Click(X, Y, "L")
-}
-return
-
-i::
-#IfWinActive, POS	; This code is only going to work if POS window is active.
-Text:="|<IBDC>*177$4.1aNaNaNa2"
-
-if (ok:=FindText(X, Y, 412-150000, 441-150000, 412+150000, 441+150000, 0, 0, Text))
-{
-   FindText().Click(X, Y, "L")
-}
-return
-
-o::
-#IfWinActive, POS	; This code is only going to work if POS window is active.
-Text:="|<OBDC>*174$11.3UTlln1y1s3s6kRllz0wE"
-
-if (ok:=FindText(X, Y, 485-150000, 434-150000, 485+150000, 434+150000, 0, 0, Text))
-{
-   FindText().Click(X, Y, "L")
-}
-return
-
-p::
-#IfWinActive, POS	; This code is only going to work if POS window is active.
-Text:="|<PBDC>*162$7.yTwSD7zzMA631"
-
-if (ok:=FindText(X, Y, 532-150000, 434-150000, 532+150000, 434+150000, 0, 0, Text))
-{
-   FindText().Click(X, Y, "L")
-}
-return
-
-; ----------- PRÓXIMA FILEIRA ----------
-
-a::
-#IfWinActive, POS	; This code is only going to work if POS window is active.
-Text:="|<ABDC>*227$11.3UD0T0y3g7QDsztzr1y3k"
-
-if (ok:=FindText(X, Y, 112-150000, 480-150000, 112+150000, 480+150000, 0, 0, Text))
-{
-   FindText().Click(X, Y, "L")
-}
-return
-
-s::
-#IfWinActive, POS	; This code is only going to work if POS window is active.
-Text:="|<SBDC>*175$7.TTg71sC3lznm"
-
-if (ok:=FindText(X, Y, 159-150000, 481-150000, 159+150000, 481+150000, 0, 0, Text))
-{
-   FindText().Click(X, Y, "L")
-}
-return
-
-d::
-#IfWinActive, POS	; This code is only going to work if POS window is active.
-Text:="|<DBDC>*170$9.zbSky3kS3kS7zrsU"
-
-if (ok:=FindText(X, Y, 205-150000, 481-150000, 205+150000, 481+150000, 0, 0, Text))
-{
-   FindText().Click(X, Y, "L")
-}
-return
-
-f::
-#IfWinActive, POS	; This code is only going to work if POS window is active.
-Text:="|<FBDC>*187$8.DjzysC3yzi3Us62"
-
-if (ok:=FindText(X, Y, 253-150000, 480-150000, 253+150000, 480+150000, 0, 0, Text))
-{
-   FindText().Click(X, Y, "L")
-}
-return
-
-g::
-#IfWinActive, POS	; This code is only going to work if POS window is active.
-Text:="|<GBDC>*177$10.7szr0M3UCDMRknz7u"
-
-if (ok:=FindText(X, Y, 299-150000, 481-150000, 299+150000, 481+150000, 0, 0, Text))
-{
-   FindText().Click(X, Y, "L")
-}
-return
-
-h::
-#IfWinActive, POS	; This code is only going to work if POS window is active.
-Text:="|<HBDC>*182$10.sTVy7sTzzzsTVy7sO"
-
-if (ok:=FindText(X, Y, 346-150000, 481-150000, 346+150000, 481+150000, 0, 0, Text))
-{
-   FindText().Click(X, Y, "L")
-}
-return
-
-j::
-#IfWinActive, POS	; This code is only going to work if POS window is active.
-Text:="|<JBDC>*172$5.6AMlX6Dzc"
-
-if (ok:=FindText(X, Y, 391-150000, 481-150000, 391+150000, 481+150000, 0, 0, Text))
-{
-   FindText().Click(X, Y, "L")
-}
-return
-
-k::
-#IfWinActive, POS	; This code is only going to work if POS window is active.
-Text:="|<KBDC>*180$9.szCvbMz7svbCsz3U"
-
-if (ok:=FindText(X, Y, 439-150000, 481-150000, 439+150000, 481+150000, 0, 0, Text))
-{
-   FindText().Click(X, Y, "L")
-}
-return
-
-l::
-#IfWinActive, POS	; This code is only going to work if POS window is active.
-Text:="|<LBDC>*182$9.03UQ3UQ3UQ3UQ3yTk0U"
-
-if (ok:=FindText(X, Y, 458-150000, 488-150000, 458+150000, 488+150000, 0, 0, Text))
-{
-   FindText().Click(X, Y, "L")
-}
-return
-
-; ----------- PRÓXIMA FILEIRA ----------
-
-z::
-#IfWinActive, POS	; This code is only going to work if POS window is active.
-Text:="|<ZBDC>*230$9.zzz1kQ7VsC3kzzzTo"
-
-if (ok:=FindText(X, Y, 112-150000, 527-150000, 112+150000, 527+150000, 0, 0, Text))
-{
-   FindText().Click(X, Y, "L")
-}
-return
-
-x::
-#IfWinActive, POS	; This code is only going to work if POS window is active.
-Text:="|<XBDC>*175$9.kz6RVwD1sDXCsq7U"
-
-if (ok:=FindText(X, Y, 159-150000, 527-150000, 159+150000, 527+150000, 0, 0, Text))
-{
-   FindText().Click(X, Y, "L")
-}
-return
-
-c::
-#IfWinActive, POS	; This code is only going to work if POS window is active.
-Text:="|<CBDC>*176$9.7nzM70k60s30TtyU"
-
-if (ok:=FindText(X, Y, 205-150000, 527-150000, 205+150000, 527+150000, 0, 0, Text))
-{
-   FindText().Click(X, Y, "L")
-}
-return
-
-v::
-#IfWinActive, POS	; This code is only going to work if POS window is active.
-Text:="|<VBDC>*176$10.kT1a6Mtn3ADUS1s72"
-
-if (ok:=FindText(X, Y, 253-150000, 527-150000, 253+150000, 527+150000, 0, 0, Text))
-{
-   FindText().Click(X, Y, "L")
-}
-return
-
-b::
-#IfWinActive, POS	; This code is only going to work if POS window is active.
-Text:="|<BBDC>*172$8.zjz7lzvykwDzzc"
-
-if (ok:=FindText(X, Y, 299-150000, 527-150000, 299+150000, 527+150000, 0, 0, Text))
-{
-   FindText().Click(X, Y, "L")
-}
-return
-
-n::
-#IfWinActive, POS	; This code is only going to work if POS window is active.
-Text:="|<NBDC>*183$10.sTVz7yTxwrlz7wDkS"
-
-if (ok:=FindText(X, Y, 346-150000, 527-150000, 346+150000, 527+150000, 0, 0, Text))
-{
-   FindText().Click(X, Y, "L")
-}
-return
-
-m::
-#IfWinActive, POS	; This code is only going to work if POS window is active.
-Text:="|<MBDC>*175$11.k7kTUzXz7vPrrbD4S0s"
-
-if (ok:=FindText(X, Y, 392-150000, 527-150000, 392+150000, 527+150000, 0, 0, Text))
-{
-   FindText().Click(X, Y, "L")
-}
-return
-}
-return
-
-
-
-
-;
 ;
 ; -------------------------------------------------------------------
-;
-;
 ;
 
 FindText(ByRef x:="FindTextObject", ByRef y:="", args*)
